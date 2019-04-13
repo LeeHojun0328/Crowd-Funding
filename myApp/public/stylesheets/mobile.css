@@ -154,8 +154,11 @@ body {
 }
 #body > ul li {
 	float: none;
-	margin: 0;
+	text-align:center;
+	margin: 10px auto auto auto;
 	width: 100%;
+	height: auto;
+	padding-bottom: 20%;
 }
 #body ul.gallery li {
 	float: left;
@@ -163,7 +166,7 @@ body {
 	width: 42%;
 }
 #body > ul li a img {
-	width: 98%;
+	width: 95%;
 }
 #body > ul li a span {
 	padding: 15px 0;
