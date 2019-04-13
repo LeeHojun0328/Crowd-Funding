@@ -5,9 +5,17 @@ var deploy = require('../../deploy.js');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	console.log("router.get('/',...) is called in /router/index.js");
-	res.render('index', { title: 'Express' });
+	res.render('index');
+	//res.render('index', { title: 'Express' });
 });
 
+router.get('/about', function(req, res, next) {
+    res.render('about');
+});
+
+router.get('/funding', function(req, res, next) {
+    res.render('funding');
+});
 
 
 /*

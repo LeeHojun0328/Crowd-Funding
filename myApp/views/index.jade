@@ -7,18 +7,18 @@ html
     title Crowd Funding
     link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
     link(rel='stylesheet', type='text/css', href='/stylesheets/mobile.css', media='screen and (max-width : 568px)')
-    script(type='text/javascript', src='/stylesheets/mobile.js')
+    script(type='text/javascript', src='/javascripts/mobile.js')
   body
     #header
-      a.logo(href='index.jade')
+      a.logo(href='/')
         img(src='/images/Crowd-Funding.png', alt='', style='')
       ul#navigation
         li.selected
-          a(href='index.jade') home
+          a(href='/') home
         li
-          a(href='about.jade') about
+          a(href='/about') about
         li
-          a(href='funding.jade') funding
+          a(href='/funding') funding
         li
           a(href='#') exchange
     #body
