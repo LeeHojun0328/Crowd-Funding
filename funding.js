@@ -21,8 +21,9 @@ const provider = new HDWalletProvider("buzz cliff voice tired good ready ripple 
 // smart contract과 infura 이더리움 노드에 연결
 contractAbs.setProvider(provider);
 
+var funding ={};
 
-function funding(from, to, amount, id, pwd){
+funding.funding = function (from, to, amount, id, pwd){
 	contractAbs.at(from).then(function(instance){
 		return instance.transferToC(to,amount, id, pwd,{from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'});
 	}).then(function(result){

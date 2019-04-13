@@ -1,6 +1,4 @@
 
-
-// 1546268400
 pragma solidity ^0.4.2;
 
 contract company {
@@ -10,14 +8,13 @@ contract company {
     bytes32 hash;       // hash(pwd)
     uint256 public goalBalance ;
     uint public goalDate;
-    uint start;
     mapping(address=>uint) Outlog;
     address[] public InvestAddr;
     
-
     event setInvestorEvent(address investerAddress, uint256 fundValue);
     event refundEvent(address refundAddr, uint256 refundValue);
-
+    event transferEvent();
+    
     //initializaion
    constructor (string _id, string  _pwd, uint _goalDate,uint _goalBalance) public  {
         platForm = msg.sender;
@@ -38,39 +35,39 @@ contract company {
     function isGoal() view public returns (bool){
         return (goalDate < now && address(this).balance >= goalBalance) ;
     }
-
+    function getGoalBalance() view public returns(uint256){
+        return goalBalance;
+    }
+    function getGoalDate() view public returns(uint){
+        return goalDate;
+    }
     function transferTo(address receiver, uint256 _amount,string _id, string _pwd ) public  { 
         require(msg.sender == platForm);
         require(isOwner(_id, _pwd));
         require(isGoal());
-        
         receiver.transfer(_amount);
-        //Outlog[receiver] += _amount;
+        emit transferEvent();
     }
 
     
     function getBalance() view public returns(uint256) {
         return address(this).balance;
     }
-    function myAddr() view public returns(address){
-        return address(this);
-    }
    
     // someone must call. 
-    function refundTo () public payable{
-        //require(!isGoal());
+    function refundTo() public payable{
+        require(!isGoal());
         address localAddr ;
         uint256 localAmount;
         for(uint256 i = 0 ; i < InvestAddr.length ; i++){
             InvestAddr[i].transfer(Outlog[InvestAddr[i]]);
-            
             //investor ref = investor(localAddr);
             //ref.getRefund.value(localAmount);
             emit refundEvent(localAddr,localAmount);
         }
     }
-
     
+    // only investor contract can call this function.  
     function setInvestor() public payable {
         Outlog[msg.sender] += msg.value;
         InvestAddr.push(msg.sender);
@@ -82,7 +79,4 @@ contract company {
 //contract investor{
 //    function getRefund() public payable {}
 //}
-
-
-
 

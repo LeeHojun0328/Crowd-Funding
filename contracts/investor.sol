@@ -4,7 +4,7 @@ pragma solidity ^0.4.25;
 contract investor {
     
     address platForm;  // platform account address
-    string id;
+    string public id;
     bytes32 hash;       // hash(pwd)
     mapping(address=>uint) log; 
     
@@ -23,6 +23,9 @@ contract investor {
     
     function isOwner(string _id, string _pwd) view private returns (bool){
         return (keccak256(bytes(id)) == keccak256(bytes(_id)) && keccak256(bytes(_pwd)) == hash);
+    }
+    function getID() view public returns (string){
+        return id ;
     }
   
     function transferToC(address receiver, uint256 _amount,string _id, string memory _pwd ) public { 
@@ -56,6 +59,7 @@ contract investor {
 contract company{
     function setInvestor () public payable{}
 }
+
 
 
 
