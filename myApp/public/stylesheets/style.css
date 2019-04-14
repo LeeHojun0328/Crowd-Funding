@@ -118,9 +118,12 @@ p a:hover {
 	width: 960px;
 }
 #body > div img {
+	display: block;
 	border: 2px solid #292929;
-	margin: 24px 0 0;
+	margin: 24px auto auto;
 	padding: 0;
+	width: 60%;
+	height: auto;
 }
 
 #body > div .article {
@@ -141,19 +144,24 @@ p a:hover {
 	padding: 0;
 }
 #body > div .article h4 {
-	background: #252525;
-	color: #fff;
+	color:  #292929;
 	display: inline-block;
-	font-family: "Arial Black", Gadget, sans-serif;
-	font-size: 25px;
+	font-size: 12px;
 	font-weight: normal;
-	margin: 0 0 30px;
-	padding: 8px 27px 10px;
+	margin: 0 0;
+	padding: 8px 0 10px;
 }
 #body > div .article p {
 	margin: 0 0 30px;
 }
+#body > div .article input{
+	margin: 0 0 30px;
+}
+#body > div .article button{
+	margin: 0 0 30px;
+}
 #body > div .article img {
+	display: inline;
 	border: 0ch;
 	height: 110px;
 	width: auto;
