@@ -19,17 +19,21 @@ contractAbs2.setProvider(provider);
 
 balance = {}
 
-balance.investorBalance = function (addr){
+balance.investorBalance = function (addr,callback){
 	contractAbs.at(addr).then(function(instance){
-		return instance.getBalance();
+		var ba = instance.getBalance();
+		callback(ba);
+		return ba;
 	}).then(function(result){
 		console.log(result.toNumber());
 	});
 }
 
-balance.companyBalance = function (addr){
+balance.companyBalance = function (addr,callback){
     contractAbs2.at(addr).then(function(instance){
-        return instance.getBalance();
+        var ba = instance.getBalance();
+		callback(ba);
+		return ba;
     }).then(function(result){
         console.log(result.toNumber());
     });

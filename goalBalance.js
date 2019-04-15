@@ -14,9 +14,11 @@ contractAbs.setProvider(provider);
 
 var obj = {};
 
-obj.goalBalance = function (addr){
+obj.goalBalance = function (addr,callback){
 	contractAbs.at(addr).then(function(instance){
-		return instance.getGoalBalance();
+		var ba = instance.getGoalBalance();
+		callback(ba);
+		return ba;
 	}).then(function(result){
 		console.log(result);
 	});

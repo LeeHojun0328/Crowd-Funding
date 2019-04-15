@@ -16,7 +16,9 @@ router.get('/about', function(req, res, next) {
 router.get('/funding', function(req, res, next) {
     res.render('funding');
 });
-
+router.get('/fundingProject', function(req, res, next) {
+    res.render('fundingProject');
+});
 
 /*
 router.get('/deploy', function(req,res){
@@ -28,7 +30,7 @@ router.get('/deploy', function(req,res){
 });
 */
 
-
+var deploy = require('../../deploy.js');
 router.route('/deploy')
 .post( function(req, res ) {
 	deploy.deployInvestor(0,function(addr){
@@ -37,5 +39,20 @@ router.route('/deploy')
 	console.log("Deploying an investor contract in route.");
 });
 
+var goalBalance = require('../../goalBalance.js');
+//var goalDate = require('../../goalDate.js');
+var balance = require('../../getBalance.js');
+var r = "목표 금액은 ";
+router.route('/checkGoal')
+.post( function(req, res ) {
+	goalBalance.goalBalance(req.body.address,function(r1){
+		r = r+r1+"입니다.";
+		res.send(r);
+	});
+});
 
 module.exports = router;
+
+
+
+

@@ -43,4 +43,19 @@ function deploy(){
 	return false;
 };
 
+function checkGoal(addr){
+	console.log("Check the contract goal");
+    $.ajax({
+        url: "/checkGoal",
+        type: "post",
+		data: {address: addr},
+        success: function(result){
+            $("#checkGoal").text(result);
+        }
+    });
+    return false;
+}
+
+
+
 
