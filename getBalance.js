@@ -22,9 +22,9 @@ balance = {}
 balance.investorBalance = function (addr,callback){
 	contractAbs.at(addr).then(function(instance){
 		var ba = instance.getBalance();
-		callback(ba);
 		return ba;
 	}).then(function(result){
+		callback(result);
 		console.log(result.toNumber());
 	});
 }
@@ -32,10 +32,10 @@ balance.investorBalance = function (addr,callback){
 balance.companyBalance = function (addr,callback){
     contractAbs2.at(addr).then(function(instance){
         var ba = instance.getBalance();
-		callback(ba);
 		return ba;
     }).then(function(result){
-        console.log(result.toNumber());
+        callback(result);
+		console.log(result.toNumber());
     });
 }
 
