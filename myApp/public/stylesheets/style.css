@@ -131,6 +131,9 @@ p a:hover {
 	padding: 30px 30px 0;
 	width: 560px;
 }
+#body > div .article a{
+	font-size: 13px;
+}
 #body > div .article h2 {
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 25px;
@@ -140,25 +143,34 @@ p a:hover {
 #body > div .article h3 {
 	color: #252525;
 	line-height: 24px;
-	margin: 0;
+	margin: 0 0 10px;
 	padding: 0;
 }
 #body > div .article h4 {
 	color:  #292929;
 	display: inline-block;
-	font-size: 12px;
+	font-size: 11px;
 	font-weight: normal;
-	margin: 0 0;
+	margin: 0 10px;
 	padding: 8px 0 10px;
 }
 #body > div .article p {
-	margin: 0 0 30px;
+	margin: 0 10px 30px;
 }
 #body > div .article input{
 	margin: 0 0 30px;
 }
 #body > div .article button{
-	margin: 0 0 30px;
+	background: #0ba39c;
+	border-radius: 6px;
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0px 7px 0;
+	padding: 5px 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
 }
 #body > div .article img {
 	display: inline;
