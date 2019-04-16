@@ -7,7 +7,8 @@ var http = require('http');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var fundingProjectRouter = require('./routes/fundingProject');
+var c = require('./routes/checkGoal');
 var app = express();
 
 // view engine setup
@@ -21,16 +22,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-
+app.use('/checkGoal',c);
+app.use('/fundingProject',fundingProjectRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-	console.log('404 error handler?');
+	console.log('404 error handler is called in app.js');
 	next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  console.log('error handler is called in app.js');
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

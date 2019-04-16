@@ -17,11 +17,14 @@ var obj = {};
 obj.goalBalance = function (addr,callback){
 	contractAbs.at(addr).then(function(instance){
 		var ba = instance.getGoalBalance();
-		callback(ba);
+		console.log('goalBalance module -> first f: '+ba);
 		return ba;
 	}).then(function(result){
-		console.log(result);
-	});
+		console.log("goalBalance module -> second f: "+result);
+		callback(result);
+	}).catch(function(err){
+        console.log(err);
+    });
 }
 
 module.exports = obj;

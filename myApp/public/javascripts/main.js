@@ -44,9 +44,8 @@ function deploy(){
 };
 
 function checkGoal(addr){
-	console.log("Check the contract goal");
     $.ajax({
-        url: "/checkGoal",
+		url: "/checkGoal",
         type: "post",
 		data: {address: addr},
         success: function(result){
