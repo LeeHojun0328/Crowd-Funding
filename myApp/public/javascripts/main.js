@@ -15,6 +15,7 @@ function deploy(){
 
 
 $(document).ready(function(){
+	$("#loader").hide();
 	$("#checkGoalBtn").click(function(){
 		console.log('d');
 		myFunction(this);
