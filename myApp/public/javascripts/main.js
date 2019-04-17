@@ -12,34 +12,32 @@ function deploy(){
 };
 
 
-var loading=$("#loader");
-$(document).ready(function(){
-	loading.show();
-	$("#checkGoalBtn").click(function(){
 
+
+$(document).ready(function(){
+	$("#checkGoalBtn").click(function(){
+		console.log('d');
+		myFunction(this);
 		$.ajax({
         	url: "/checkGoal",
         	type: "post",
         	data: {address: '0x30070a189bd36ddc3b511d15e2ad656dd2fbb6d3'},
         	success: function(result){
 				$("#checkGoal").text(result);
-				loading.hide();
+				myFunction(this);
         	}
     	});
-
 		var btn = $(this);
     	btn.prop('disabled',true);
-    	window.setTimeout(function(){ 
-    	    btn.prop('disabled',false);
+    	window.setTimeout(function(){
+			btn.prop('disabled',false);
     	},6000);
 		return false;
 	});
 
-	$( "#checkGoalBtn" ).click(function() {
-		loader();
-	});
-	function loader(div){
+	function myFunction(div) {
 		$("#loader").toggle();
 	}
+
 });
 
