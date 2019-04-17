@@ -4,15 +4,15 @@ html
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Funding!
-    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
-    link(rel='stylesheet', type='text/css', href='/stylesheets/mobile.css', media='screen and (max-width : 568px)')
+    link(rel='stylesheet', type='text/css', href='../public/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='../public/stylesheets/mobile.css', media='screen and (max-width : 568px)')
     script(src='https://code.jquery.com/jquery-3.4.0.min.js')
-    script(type='text/javascript', src='/javascripts/mobile.js')
-    script(type='text/javascript', src='/javascripts/main.js')
+    script(type='text/javascript', src='../public/javascripts/mobile.js')
+    script(type='text/javascript', src='../public/javascripts/main.js')
   body
     #header
       a.logo(href='index.html')
-        img(src='/images/Crowd-Funding.png', alt='')
+        img(src='../public/images/Crowd-Funding.png', alt='')
       ul#navigation
         li
           a(href='/') home
@@ -24,7 +24,7 @@ html
           a(href='#') exchange
     #body
       div
-        img(src='/images/wallet.jpg', alt='')
+        img(src='../public/images/wallet.jpg', alt='')
         .article
           h2 대한민국 대표 지갑, Monedero
           p
@@ -46,6 +46,7 @@ html
             br
             |  이러디움 노드를 사용하여 현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.
           p#checkGoal
+          #loader
           h3 잔액 확인하기
           button 나의 이더 잔액 확인하기
           br
@@ -58,4 +59,3 @@ html
           | 1500wei 투자: 가죽지갑 + 각인
           br
     #footer
-
