@@ -1,36 +1,4 @@
 
-/*
-function deploy(){
-	console.log("is it work?");
-	var reader = new FileReader();
-	reader.onload = function(event){
-		$.get("/deploy", function(data){
-			if (data != "Error"){
-				$("#message").html("배포된 contract 주소는 "+data);
-			}else{
-				$("#message").text("An error occuered.");
-			}
-		});
-	}
-}
-
-*/
-
-/*
-function deploy(){
-	$("#deploy").click("submit",function(){
-		console.log("Function in ./public/javascripts/main.js");
-		$.ajax({
-			url: "/deploy",
-			type: "post",
-			success: function(result){
-				$("#txt1").text(result);
-			}
-		});	
-		return false;
-	});
-};
-*/
 function deploy(){
 	console.log("Function in ./public/javascripts/main.js");
     $.ajax({
@@ -58,23 +26,22 @@ function checkGoal(addr){
 }
 */
 $(document).ready(function(){
-$("#checkGoalBtn").click(function(){
-    console.log("work?");
-	$.ajax({
-        url: "/checkGoal",
-        type: "post",
-        data: {address: '0x30070a189bd36ddc3b511d15e2ad656dd2fbb6d3'},
-        success: function(result){
-            $("#checkGoal").text(result);
-        }
-    });
-	console.log('work?');
+	$("#checkGoalBtn").click(function(){
+		$.ajax({
+        	url: "/checkGoal",
+        	type: "post",
+        	data: {address: '0x30070a189bd36ddc3b511d15e2ad656dd2fbb6d3'},
+        	success: function(result){
+        	    $("#checkGoal").text(result);
+        	}
+    	});
+	
 	var btn = $(this);
     btn.prop('disabled',true);
-    window.setTimeout(function(){ 
-        btn.prop('disabled',false);
+    	window.setTimeout(function(){ 
+    	    btn.prop('disabled',false);
     },6000);
 	return false;
-});
+	});
 });
 
