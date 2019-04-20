@@ -9,14 +9,16 @@ html
     script(type='text/javascript', src='/javascripts/mobile.js')
   body
     #header
-      .login
+      .usrInfo
         ul
           li
-            a(href='login') 로그인
+            a.login(href='login') 로그인
           li
-            a(href='#') 회원가입
+            a.register(href='#') 회원가입
           li
-            a(href='#') 투자 기록
+            a.logout(href='#') 로그아웃
+          li
+            a.list(href='#') 투자 기록
       a.logo(href='/')
         img(src='images/Crowd-Funding.png', alt='')
       ul#navigation

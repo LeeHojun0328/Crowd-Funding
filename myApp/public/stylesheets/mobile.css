@@ -9,21 +9,21 @@ body {
 	text-align: center;
 	width: 100%;
 }
-#header .login{
+#header .usrInfo{
 	position: relative;
 	float: right;
 	top: 5px;
 	right: 13px;
 	clear: both;
 }
-#header .login>ul{
+#header .usrInfo>ul{
 	padding-top: 20px;
 	display: inline;
 }
-#header .login ul li{
+#header .usrInfo ul li{
 	padding: 0 5px;
 }
-#header .login ul li a{
+#header .usrInfo ul li a{
 	font-size: 14px;
 	font-weight: bold;
 }

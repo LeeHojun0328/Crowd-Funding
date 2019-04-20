@@ -12,6 +12,18 @@ function deploy(){
 };
 
 
+function login(){
+	var form = $(this);
+	var data = form.serialize();
+	
+	$.ajax({
+		url: "/login",
+		type: "post",
+		success: function(result){
+			alert('로그인 되었습니다.');
+		}
+	});
+}
 
 
 $(document).ready(function(){
@@ -39,6 +51,5 @@ $(document).ready(function(){
 	function myFunction(div) {
 		$("#loader").toggle();
 	}
-
 });
 

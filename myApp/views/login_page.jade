@@ -12,14 +12,16 @@ html
     script(type='text/javascript', src='/javascripts/main.js')
   body
     #header
-      .login
+      .usrInfo
         ul
-          li#login
-            a(href='login') 로그인
           li
-            a(href='#') 회원가입
+            a.login(href='login') 로그인
           li
-            a(href='#') 투자 기록
+            a.register(href='#') 회원가입
+          li
+            a.logout(href='#') 로그아웃
+          li
+            a.list(href='#') 투자 기록
       a.logo(href='/')
         img(src='/images/Crowd-Funding.png', alt='', style='')
       ul#navigation
@@ -33,8 +35,8 @@ html
           a(href='#') exchange
     #body
       #myForm.form-popup
-        form.form-container(action='/login_page', method='POST')
-          input(type='text', placeholder='아이디를 입력해주세요.', name='email')
-          input(type='password', placeholder='비밀번호를 입력해주세요.', name='psw')
-          button.btn(type='submit') Login
+        form.form-container(action='/login', method='POST')
+          input(type='text', placeholder='아이디를 입력해주세요.', name='id')
+          input(type='password', placeholder='비밀번호를 입력해주세요.', name='pwd')
+          button.btn(type='submit', onclick='login()') Login
     #footer

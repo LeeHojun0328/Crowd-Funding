@@ -46,19 +46,19 @@ p a:hover {
 	width: 960px;
 }
 
-#header .login{
+#header .usrInfo{
 	position: absolute;
 	top: 10px;
 	right: 70px;
 }
-#header .login>ul{
+#header .usrInfo>ul{
 	padding-top: 20px;
 
 }
-#header .login ul li{
+#header .usrInfo ul li{
 	padding: 0 5px;
 }
-#header .login ul li a{
+#header .usrInfo ul li a{
 	padding-top: 20px;
 
 }
