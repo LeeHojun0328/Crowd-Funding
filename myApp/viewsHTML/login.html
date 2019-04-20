@@ -1,0 +1,59 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Crowd Funding</title>
+	<link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="../public/stylesheets/mobile.css" media="screen and (max-width : 568px)">
+	<script src= "https://code.jquery.com/jquery-3.4.0.min.js"></script>
+	<script type="text/javascript" src="../public/javascripts/mobile.js"></script>
+	<script type="text/javascript" src="../public/javascripts/main.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div class="login">
+			<ul>
+				<li id="login" ><a href="login_page.html">로그인</a></li>
+				<li><a href="#">회원가입</a></li>
+				<li><a href="#">투자 기록</a></li>
+			</ul>
+		</div>
+
+		<a href="index.html" class="logo">
+			<img src="../public/images/Crowd-Funding.png" alt="" style>
+		</a>
+		<ul id="navigation">
+			<li class="selected">
+				<a href="index.html">home</a>
+			</li>
+			<li>
+				<a href="about.html">about</a>
+			</li>
+
+			<li>
+				<a href="funding.html">funding</a>
+			</li>
+			<li>
+				<a href="#">exchange</a>
+			</li>
+		</ul>
+	</div>
+	<div id="body">
+
+        <div class="form-popup" id="myForm">
+            <form action="/login_page" method="POST" class="form-container">
+
+                <input type="text" placeholder="아이디를 입력해주세요." name="email" >
+
+                <input type="password" placeholder="비밀번호를 입력해주세요." name="psw" >
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+	</div>
+	<div id="footer"></div>
+</body>
+</html>
+

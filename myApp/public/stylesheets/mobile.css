@@ -14,6 +14,7 @@ body {
 	float: right;
 	top: 5px;
 	right: 13px;
+	clear: both;
 }
 #header .login>ul{
 	padding-top: 20px;
@@ -33,6 +34,7 @@ body {
 	left: auto;
 	width: 80%;
 	position: relative;
+	clear: both;
 }
 #header a.logo img {
 	width: 100%;
@@ -106,6 +108,52 @@ body {
 }
 #body {
 	width: 100%;
+}
+
+/* Code for login_page.html */
+#body .form-popup {
+	border: 2px solid #7caca9;
+	margin-top: 60px;
+	margin-bottom: 100px;
+	padding: 20px 20px 40px;
+	width: 80%;
+	text-align: center;
+}
+
+#body .form-container {
+	background-color: white;
+	text-align: center;
+	width: 100%;
+}
+
+#body .form-container input, .form-container input[type=password] {
+	display: block;
+	width: 70%;
+	padding: 15px;
+	margin: 20px auto;
+	border: none;
+	background: #f1f1f1;
+	text-align: left;
+}
+
+#body .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+}
+
+#body .form-container .btn {
+	background-color: #4CAF50;
+	font-size: 22px;
+	color: white;
+	margin-top: 20px;
+  	padding: 13px 15px;
+  	border: none;
+  	cursor: pointer;
+  	width: 80%;
+  	opacity: 0.8;
+}
+
+#body .form-container .btn:hover{
+  	opacity: 1;
 }
 #body h1 {
 	display: block;

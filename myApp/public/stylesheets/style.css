@@ -45,16 +45,12 @@ p a:hover {
 	text-align: center;
 	width: 960px;
 }
-<<<<<<< HEAD
+
 #header .login{
-=======
-#header nav{
->>>>>>> b518ee907a7b7d4897a6cc935b09659a7991117b
 	position: absolute;
 	top: 10px;
 	right: 70px;
 }
-<<<<<<< HEAD
 #header .login>ul{
 	padding-top: 20px;
 
@@ -63,8 +59,6 @@ p a:hover {
 	padding: 0 5px;
 }
 #header .login ul li a{
-=======
-#header nav>ul{
 	padding-top: 20px;
 
 }
@@ -72,7 +66,6 @@ p a:hover {
 	padding: 0 5px;
 }
 #header nav ul li a{
->>>>>>> b518ee907a7b7d4897a6cc935b09659a7991117b
 	font-size: 14px;
 	font-weight: bold;
 }
@@ -81,11 +74,7 @@ p a:hover {
 	width: 320px;
 	position: absolute;
 	top: 10%;
-<<<<<<< HEAD
   left: 3%;
-=======
-  left: 2%;
->>>>>>> b518ee907a7b7d4897a6cc935b09659a7991117b
   margin-top: -25px;
 }
 #header a.logo img {
@@ -93,11 +82,7 @@ p a:hover {
 	width: 320px;
 	position: absolute;
 	top: 10%;
-<<<<<<< HEAD
   left: 3%;
-=======
-  left: 2%;
->>>>>>> b518ee907a7b7d4897a6cc935b09659a7991117b
   margin-top: -25px;
 }
 #header ul {
@@ -128,6 +113,51 @@ p a:hover {
 	margin: 0;
 	padding: 0 0 30px;
 	text-align: left;
+}
+/* Code for login_page.html */
+#body .form-popup {
+	border: 2px solid #7caca9;
+	margin-top: 60px;
+	margin-bottom: 100px;
+	padding: 20px 20px 40px;
+	width: 35%;
+	text-align: center;
+}
+
+#body .form-container {
+	background-color: white;
+	text-align: center;
+	width: 100%;
+}
+
+#body .form-container input, .form-container input[type=password] {
+	display: block;
+	width: 50%;
+  padding: 15px;
+  margin: 20px auto;
+  border: none;
+	background: #f1f1f1;
+	text-align: left;
+}
+
+#body .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+}
+
+#body .form-container .btn {
+	background-color: #4CAF50;
+	font-size: 22px;
+	color: white;
+	margin-top: 20px;
+  padding: 13px 20px;
+  border: none;
+  cursor: pointer;
+  width: 65%;
+  opacity: 0.8;
+}
+
+#body .form-container .btn:hover{
+  opacity: 1;
 }
 #body h1 {
 	color: #fff;

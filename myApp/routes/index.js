@@ -8,7 +8,10 @@ router.get('/', function(req, res, next) {
 	res.render('index');
 	//res.render('index', { title: 'Express' });
 });
-
+router.get('/login', function(req, res, next) {
+    console.log('route for /login is called in index.js');
+    res.render('login');
+});
 router.get('/about', function(req, res, next) {
 	console.log('route for /about is called in index.js');
     res.render('about');
