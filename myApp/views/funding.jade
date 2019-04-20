@@ -9,6 +9,14 @@ html
     script(type='text/javascript', src='/javascripts/mobile.js')
   body
     #header
+      .login
+        ul
+          li
+            a(href='#') 로그인
+          li
+            a(href='#') 회원가입
+          li
+            a(href='#') 투자 기록
       a.logo(href='/')
         img(src='images/Crowd-Funding.png', alt='')
       ul#navigation
@@ -36,7 +44,7 @@ html
             span.goal-amount 1000 wei
             span.goal-date , 4/5
         li
-          a(href='/fundingProject')
+          a(href='/funding/fundingProject')
             img(src='images/watch.jpg', alt='')
           p
             | 2차 펀딩 성공! Relojh 시계
@@ -44,7 +52,7 @@ html
             span.goal-amount 1000 wei
             span.goal-date , 4/10
         li
-          a(href='/fundingProject')
+          a(href='/funding/fundingProject')
             img(src='images/quadrocopter.png', alt='')
           p
             | 한 번 충전시 사용시간 10시간! 
@@ -54,7 +62,7 @@ html
             span.goal-amount 1000 wei
             span.goal-date , 5/5
         li
-          a(href='/fundingProject')
+          a(href='/funding/fundingProject')
             img(src='images/bread.jpg', alt='')
           p
             | 신라호텔 출신 브랜드 빵

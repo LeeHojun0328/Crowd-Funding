@@ -3,15 +3,40 @@ body {
 	min-width: 0;
 }
 #header {
-	padding: 20px 0;
+	margin: 0 auto;
 	position: relative;
+	padding: 20px 0 ;
+	text-align: center;
 	width: 100%;
 }
+#header .login{
+	position: relative;
+	float: right;
+	top: 5px;
+	right: 13px;
+}
+#header .login>ul{
+	padding-top: 20px;
+	display: inline;
+}
+#header .login ul li{
+	padding: 0 5px;
+}
+#header .login ul li a{
+	font-size: 14px;
+	font-weight: bold;
+}
 #header a.logo {
+	padding: 0;
+	margin: 0 auto;
+	top: auto;
+	left: auto;
 	width: 80%;
+	position: relative;
 }
 #header a.logo img {
 	width: 100%;
+	position: relative;
 }
 #mobile-navigation {
 	background: url(/images/mobile-menu.png) no-repeat 0 0;
@@ -21,7 +46,7 @@ body {
 	padding: 0;
 	width: 50px;
 }
-#header ul {
+#header > ul {
 	border: 1px solid #fff;
 	display: none;
 	left: 50%;
@@ -31,7 +56,7 @@ body {
 	width: 90%;
 	z-index: 1001;
 }
-#header ul li {
+#header > ul li {
 	border-top: 1px solid #fff;
 	display: block;
 	margin: 0;
@@ -41,7 +66,7 @@ body {
 #header > ul > li:first-child {
 	border: 0;
 }
-#header ul li a {
+#header> ul li a {
 	background: rgba(11, 163, 156, 0.9);
 	color: #fff;
 	display: block;
@@ -53,11 +78,11 @@ body {
 	padding: 0 15px;
 	text-align: left;
 }
-#header ul li a:hover, #header ul li.selected a {
+#header >ul li a:hover, #header ul li.selected a {
 	background: rgba(0, 0, 0, 0.9);
 	color: #fff;
 }
-#header ul ul {
+#header >ul ul {
 	display: none;
 	border: 0;
 	height: auto;
@@ -66,10 +91,10 @@ body {
 	position: relative;
 	width: 100%;
 }
-#header ul ul li a {
+#header> ul ul li a {
 	text-indent: 15px;
 }
-#header ul li span {
+#header >ul li span {
 	background: rgba(11, 163, 156, 0.9) url(/images/mobile-expand.png) no-repeat 0 0;
 	border-left: 1px solid #fff;
 	display: block;
