@@ -11,22 +11,9 @@ function deploy(){
 	return false;
 };
 
-
-function login(){
-	var form = $(this);
-	var data = form.serialize();
-	
-	$.ajax({
-		url: "/login",
-		type: "post",
-		success: function(result){
-			alert('로그인 되었습니다.');
-		}
-	});
-}
-
-
 $(document).ready(function(){
+	console.log(document.cookie);
+	
 	$("#loader").hide();
 	$("#checkGoalBtn").click(function(){
 		console.log('d');
@@ -51,5 +38,75 @@ $(document).ready(function(){
 	function myFunction(div) {
 		$("#loader").toggle();
 	}
+       		
+	$('.fform-container').submit(function(e){
+		//e.preventDefault();
+		console.log('submit');
+		var form = $(this);
+    	var data = form.serialize();
+
+    	$.ajax({
+        	url: "/loginPost",
+        	type: "post",
+			data: data,
+        	success: function(result){
+        		alert('로그인되었습니다.');	
+			}
+    	});
+    	return true;
+		
+	});
+		
+	// post logout
+	$('.usrInfo .logout').click(function(){
+		document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		$.ajax({
+            url: "/logout",
+            type: "post",
+            success: function(result){
+                console.log("logout javascript");
+				alert("로그아웃되었습니다.");
+            }
+        });
+        return true;
+	});
+	
 });
+/*
+$('.form-container').submit(function(e){
+        //e.preventDefault();
+
+	console.log('submit');
+	var form = $(this);
+    var data = form.serialize();
+
+	$.ajax({
+		url: "/loginPost",
+		type: "post",
+		data: data,
+		success: function(result){
+			$('.login').hide();
+		}
+	});
+	return true;
+});
+
+
+$('.usrInfo .logout').click(function(){
+	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    $.ajax({
+    	url: "/logout",
+        type: "post",
+        success: function(result){
+        	console.log(result);
+			alert("로그아웃");
+        }
+    });
+    return true;
+});
+
+*/
+
+
+
 

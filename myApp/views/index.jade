@@ -7,7 +7,9 @@ html
     title Crowd Funding
     link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
     link(rel='stylesheet', type='text/css', href='/stylesheets/mobile.css', media='screen and (max-width : 568px)')
+    script(src='https://code.jquery.com/jquery-3.4.0.min.js')
     script(type='text/javascript', src='/javascripts/mobile.js')
+    script(type='text/javascript', src='/javascripts/main.js')
   body
     #header
       .usrInfo
@@ -17,7 +19,7 @@ html
           li
             a.register(href='#') 회원가입
           li
-            a.logout(href='#') 로그아웃
+            a.logout(href='') 로그아웃
           li
             a.list(href='#') 투자 기록
       a.logo(href='/')

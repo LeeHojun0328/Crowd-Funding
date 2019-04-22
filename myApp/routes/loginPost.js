@@ -4,17 +4,21 @@ var express = require('express');
 var router = express.Router();
 
 function f (req,res){
-	console.log('login route is called.');
+	console.log('loginPost is called');
 	var paramId = req.body.id;
 	var paramPwd = req.body.pwd;
-
+	console.log(req.body);
+	
 	req.session.user={
 		id: paramId,
 		authorized: true
 	};
-	res.redirect('/');
+	res.cookie('user',{
+		id: paramId,
+		authorized: true
+	});
+	res.redirect('/'); //does it possilbe to redirect with alert?
 }
-
 
 
 module.exports = f;
