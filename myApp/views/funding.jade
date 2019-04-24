@@ -9,6 +9,7 @@ html
     script(src='https://code.jquery.com/jquery-3.4.0.min.js')
     script(type='text/javascript', src='/javascripts/mobile.js')
     script(type='text/javascript', src='/javascripts/main.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
   body
     #header
       .usrInfo
@@ -18,7 +19,7 @@ html
           li
             a.register(href='#') 회원가입
           li
-            a.logout(href='logout') 로그아웃
+            a.logout(href='/') 로그아웃
           li
             a.list(href='#') 투자 기록
       a.logo(href='/')
@@ -40,7 +41,7 @@ html
         br
         br
         li
-          a(href='/funding/fundingProject')
+          a(href='/fundingProject')
             img(src='images/wallet.jpg', alt='')
           p
             | 대한민국 대표 지갑, Monedero
@@ -48,7 +49,7 @@ html
             span.goal-amount 1000 wei
             span.goal-date , 4/5
         li
-          a(href='/funding/fundingProject')
+          a(href='/fundingProject')
             img(src='images/watch.jpg', alt='')
           p
             | 2차 펀딩 성공! Relojh 시계
@@ -56,7 +57,7 @@ html
             span.goal-amount 1000 wei
             span.goal-date , 4/10
         li
-          a(href='/funding/fundingProject')
+          a(href='/fundingProject')
             img(src='images/quadrocopter.png', alt='')
           p
             | 한 번 충전시 사용시간 10시간! 
@@ -66,7 +67,7 @@ html
             span.goal-amount 1000 wei
             span.goal-date , 5/5
         li
-          a(href='/funding/fundingProject')
+          a(href='/fundingProject')
             img(src='images/bread.jpg', alt='')
           p
             | 신라호텔 출신 브랜드 빵

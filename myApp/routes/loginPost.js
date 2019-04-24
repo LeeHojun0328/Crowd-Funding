@@ -13,11 +13,16 @@ function f (req,res){
 		id: paramId,
 		authorized: true
 	};
+	/*
 	res.cookie('user',{
 		id: paramId,
 		authorized: true
 	});
-	res.redirect('/'); //does it possilbe to redirect with alert?
+	*/
+	console.log('cookie is');
+	console.log(res.cookie.users);
+		
+	res.send('/'); // -> This is impossible. Because, client-side uses ajax. so redirect url on client-side. 
 }
 
 

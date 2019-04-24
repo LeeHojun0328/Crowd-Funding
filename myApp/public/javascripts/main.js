@@ -12,11 +12,42 @@ function deploy(){
 };
 
 $(document).ready(function(){
-	console.log(document.cookie);
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+	var cook = $.cookie('user');  // getCookie('user'); 
+	//console.log("current cook value is "+cook);
+	console.log(getCookie('user'));
+	//여기서 세션 관리에 따라 로그인 로그아수 hide, show 결정 
+	if(cook== 1 || !cook){ // if empty -> false. No login
+		console.log('status: logout');
+		$('.usrInfo .logout').hide();
+		$('.usrInfo .list').hide();
+		$('.usrInfo .login').show();
+		$('.usrInfo .register').show();
+	}else{
+		console.log('status: login');
+		$('.usrInfo .logout').show();
+		$('.usrInfo .list').show();
+        $('.usrInfo .login').hide();
+        $('.usrInfo .register').hide();	
+	}
 	
+	// Button for checking the goal.
 	$("#loader").hide();
 	$("#checkGoalBtn").click(function(){
-		console.log('d');
 		myFunction(this);
 		$.ajax({
         	url: "/checkGoal",
@@ -38,39 +69,48 @@ $(document).ready(function(){
 	function myFunction(div) {
 		$("#loader").toggle();
 	}
-       		
-	$('.fform-container').submit(function(e){
-		//e.preventDefault();
-		console.log('submit');
-		var form = $(this);
-    	var data = form.serialize();
+    
 
-    	$.ajax({
+	// Button for login 
+	$('.form-container .btn').click(function(e){
+		//e.preventDefault();
+		console.log('loging cliecked');
+		//var form = $(this);
+    	//var data = form.serialize();
+		
+		var id = $('.form-container > .id').val();
+		var pwd = $('.form-container > .pwd').val();
+		$.ajax({
         	url: "/loginPost",
         	type: "post",
-			data: data,
+			data: {id:id, pwd:pwd},
         	success: function(result){
-        		alert('로그인되었습니다.');	
+        		$.cookie('user','2');
+				alert('로그인되었습니다.');	
+				window.location.replace('/');
+				console.log('status: login');
 			}
     	});
     	return true;
 		
 	});
-		
 	// post logout
 	$('.usrInfo .logout').click(function(){
-		document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		console.log('logout btn is clicked.');
+		//$.cookie('user','1');
 		$.ajax({
             url: "/logout",
             type: "post",
             success: function(result){
-                console.log("logout javascript");
+                console.log("logout response");
+				//document.cookie = "user=;";
+				$.cookie('user','1');
 				alert("로그아웃되었습니다.");
+				//window.location.replace('/');
             }
         });
         return true;
 	});
-	
 });
 /*
 $('.form-container').submit(function(e){
@@ -91,22 +131,6 @@ $('.form-container').submit(function(e){
 	return true;
 });
 
-
-$('.usrInfo .logout').click(function(){
-	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    $.ajax({
-    	url: "/logout",
-        type: "post",
-        success: function(result){
-        	console.log(result);
-			alert("로그아웃");
-        }
-    });
-    return true;
-});
-
 */
-
-
 
 

@@ -10,6 +10,7 @@ html
     script(src='https://code.jquery.com/jquery-3.4.0.min.js')
     script(type='text/javascript', src='/javascripts/mobile.js')
     script(type='text/javascript', src='/javascripts/main.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
   body
     #header
       .usrInfo
@@ -19,7 +20,7 @@ html
           li
             a.register(href='#') 회원가입
           li
-            a.logout(href='') 로그아웃
+            a.logout(href='/') 로그아웃
           li
             a.list(href='#') 투자 기록
       a.logo(href='/')
@@ -35,8 +36,8 @@ html
           a(href='#') exchange
     #body
       #myForm.form-popup
-        form.form-container(action="/loginPost", method="post")
-          input(type='text', placeholder='아이디를 입력해주세요.', name='id', required="")
-          input(type='password', placeholder='비밀번호를 입력해주세요.', name='pwd',required="")
+        div.form-container(action="/loginPost", method="post")
+          input(type='text', placeholder='아이디를 입력해주세요.', class='id', required="")
+          input(type='password', placeholder='비밀번호를 입력해주세요.', class='pwd',required="")
           button.btn(type='submit') Login
     #footer

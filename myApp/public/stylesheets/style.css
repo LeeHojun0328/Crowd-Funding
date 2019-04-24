@@ -133,10 +133,11 @@ p a:hover {
 #body .form-container input, .form-container input[type=password] {
 	display: block;
 	width: 50%;
-  padding: 15px;
-  margin: 20px auto;
-  border: none;
+	padding: 15px;
+	margin: 20px auto;
+	border: none;
 	background: #f1f1f1;
+	font-size: 14px;
 	text-align: left;
 }
 
