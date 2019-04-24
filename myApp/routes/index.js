@@ -22,6 +22,11 @@ router.get('/funding', function(req, res, next) {
     res.render('funding');
 });
 
+router.get('/register', function(req, res, next) {
+    console.log('route for /regiser is called in index.js');
+    res.render('register');
+});
+
 router.get('/fundingProject', function(req, res, next) {
     console.log('route for /funding/fundingProejct is called in fundingProject.js');
 	if(req.session.user){
