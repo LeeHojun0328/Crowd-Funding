@@ -173,12 +173,11 @@ body {
 	  text-align: center;
 	  width: 100%;
   }
-  #body .register-form-container > div{
-	  text-align: horizontal;
-  }
+
   
   #body .register-form-container input, .register-form-container input[type=password] {
-	  display: inline;
+	  display: inline-block;
+	  width: 40%;
 	  padding: 15px 8px;
 	  margin: 20px 5px;
 	  border: none;

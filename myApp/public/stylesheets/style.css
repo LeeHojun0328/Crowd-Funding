@@ -175,9 +175,7 @@ p a:hover {
 	text-align: center;
 	width: 100%;
 }
-#body .register-form-container > div{
-	text-align: horizontal;
-}
+
 
 #body .register-form-container input, .register-form-container input[type=password] {
 	display: inline;
