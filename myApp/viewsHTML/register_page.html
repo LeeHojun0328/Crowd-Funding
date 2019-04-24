@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowd Funding</title>
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/mobile.css" media="screen and (max-width : 568px)">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="../public/javascripts/mobile.js"></script>
+    <script type="text/javascript" src="../public/javascripts/main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="usrInfo">
+        <ul>
+          <li><a class="login" href="login">로그인</a></li>
+          <li><a class="register" href="#">회원가입</a></li>
+          <li><a class="logout" href="/">로그아웃</a></li>
+          <li><a class="list" href="#">투자 기록</a></li>
+        </ul>
+      </div><a class="logo" href="/"><img src="../public/images/Crowd-Funding.png" alt=""></a>
+      <ul id="navigation">
+        <li class="selected"><a href="/">home</a></li>
+        <li><a href="about">about</a></li>
+        <li><a href="funding">funding</a></li>
+        <li><a href="#">exchange</a></li>
+      </ul>
+    </div>
+    <div id="body">
+      <div class="register-form-popup" id="myForm">
+        <div class="register-form-container" action="/register" method="post">
+        <h2>회원가입</h2>
+        <div>
+            <label for="register-id">아이디를 입력해주세요.</label>
+            <input class="register-id" type="text" placeholder="아이디를 입력해주세요." required="">
+        </div>
+        <div>
+            <label for="register-pwd">비밀번호를 입력해주세요.</label>
+            <input class="register-pwd" type="password" placeholder="비밀번호를 입력해주세요." required="">
+        </div>
+        <button class="register-btn" type="submit">Register</button>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

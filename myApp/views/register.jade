@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Crowd Funding
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/mobile.css', media='screen and (max-width : 568px)')
+    script(src='https://code.jquery.com/jquery-3.4.0.min.js')
+    script(type='text/javascript', src='/javascripts/mobile.js')
+    script(type='text/javascript', src='/javascripts/main.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+  body
+    #header
+      .usrInfo
+        ul
+          li
+            a.login(href='login') 로그인
+          li
+            a.register(href='#') 회원가입
+          li
+            a.logout(href='/') 로그아웃
+          li
+            a.list(href='#') 투자 기록
+      a.logo(href='/')
+        img(src='/images/Crowd-Funding.png', alt='')
+      ul#navigation
+        li.selected
+          a(href='/') home
+        li
+          a(href='about') about
+        li
+          a(href='funding') funding
+        li
+          a(href='#') exchange
+    #body
+      #myForm.register-form-popup
+        .register-form-container(action='/register', method='post')
+          h2 회원가입
+          div
+            label(for='register-id') 아이디를 입력해주세요.
+            input.register-id(type='text', placeholder='아이디를 입력해주세요.', required='')
+          div
+            label(for='register-pwd') 비밀번호를 입력해주세요.
+            input.register-pwd(type='password', placeholder='비밀번호를 입력해주세요.', required='')
+          button.register-btn(type='submit') Register
+    #footer

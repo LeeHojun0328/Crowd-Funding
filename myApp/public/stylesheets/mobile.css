@@ -155,6 +155,57 @@ body {
 #body .form-container .btn:hover{
   	opacity: 1;
 }
+/* register */
+#body .register-form-container .btn:hover{
+	opacity: 1;
+  }
+  #body .register-form-popup {
+	  border: 2px solid #7caca9;
+	  margin-top: 60px;
+	  margin-bottom: 100px;
+	  padding: 20px 20px 40px;
+	  width: 80%;
+	  text-align: center;
+  }
+  
+  #body .register-form-container {
+	  background-color: white;
+	  text-align: center;
+	  width: 100%;
+  }
+  #body .register-form-container > div{
+	  text-align: horizontal;
+  }
+  
+  #body .register-form-container input, .register-form-container input[type=password] {
+	  display: inline;
+	  padding: 15px;
+	  margin: 20px 20px;
+	  border: none;
+	  background: #f1f1f1;
+	  font-size: 14px;
+	  text-align: left;
+  }
+  
+  #body .register-form-container input[type=text]:focus, .register-form-container input[type=password]:focus {
+	background-color: #ddd;
+  }
+  
+  #body .register-form-container .register-btn {
+	  background-color: #4CAF50;
+	  font-size: 22px;
+	  color: white;
+	  margin-top: 20px;
+	padding: 13px 20px;
+	border: none;
+	cursor: pointer;
+	width: 80%;
+	opacity: 0.8;
+  }
+  
+  #body .register-form-container .btn:hover{
+	opacity: 1;
+  }
 #body h1 {
 	display: block;
 	font-size: 20px;
