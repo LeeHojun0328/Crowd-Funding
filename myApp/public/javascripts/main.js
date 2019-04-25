@@ -71,7 +71,7 @@ $(document).ready(function(){
 	}
     
 
-	// Button for login 
+	// post login 
 	$('.form-container .btn').click(function(e){
 		//e.preventDefault();
 		console.log('loging cliecked');
@@ -85,10 +85,15 @@ $(document).ready(function(){
         	type: "post",
 			data: {id:id, pwd:pwd},
         	success: function(result){
-        		$.cookie('user','2');
-				alert('로그인되었습니다.');	
-				window.location.replace('/');
-				console.log('status: login');
+				if(result.success){
+					$.cookie('user','2');
+					alert('로그인되었습니다.');	
+					window.location.replace('/');
+					console.log('status: login');
+				}else{
+					alert('아이디 또는 비밀번호가 틀렸습니다.');
+					console.log('status: logout');
+				}
 			}
     	});
     	return true;

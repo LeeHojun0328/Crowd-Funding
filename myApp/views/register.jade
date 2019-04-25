@@ -35,13 +35,13 @@ html
           a(href='#') exchange
     #body
       #myForm.register-form-popup
-        .register-form-container(action='/register', method='post')
+        form.register-form-container(action='/register', method='post')
           h2 회원가입
           div
-            label(for='register-id') 아이디를 입력해주세요.
-            input.register-id(type='text', placeholder='아이디', required='')
+            label(for='registerId') 아이디를 입력해주세요.
+            input.register-id(type='text',name="registerId", placeholder='아이디', required='',autocomplete="on")
           div
-            label(for='register-pwd') 비밀번호를 입력해주세요.
-            input.register-pwd(type='password', placeholder='비밀번호', required='')
+            label(for='registerPwd') 비밀번호를 입력해주세요.
+            input.register-pwd(type='password',name="registerPwd", placeholder='비밀번호', required='',autocomplete="on")
           button.register-btn(type='submit') Register
     #footer

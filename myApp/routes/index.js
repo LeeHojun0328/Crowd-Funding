@@ -2,6 +2,22 @@ var express = require('express');
 var router = express.Router();
 var deploy = require('../../deploy.js');
 
+var express = require('express');
+var router = express.Router();
+
+/* mysql connection */
+var mysql = require('mysql');
+var db = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '1111',
+  database : 'ProjectDB'
+});
+
+db.connect();
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	console.log("route for / is called in index.js");
@@ -36,11 +52,34 @@ router.get('/fundingProject', function(req, res, next) {
 	}
 });
 
-/* Respond post requests. */
+
+/* post requests. */
 router.route('/deploy').post(require('./deploy.js'));
 
 router.route('/checkGoal').post(require('./checkGoal.js'));
-router.route('/loginPost').post(require('./loginPost.js'));
+
+router.route('/loginPost').post(function f (req,res){
+	    var paramId = req.body.id;
+	    var paramPwd = req.body.pwd;
+		db.query('select pwd from user where id =? ;',
+            [paramId], function(error,result){
+        	if(error){throw error;}
+        	console.log('pwd is'+result[0].pwd);
+
+			if(paramPwd == result[0].pwd){	// login success.
+				console.log('login success');
+				req.session.user={
+            		id: paramId,
+            		authorized: true
+        		};
+				res.json({success: true});
+			}else{							// login failed.
+				console.log('login failed');
+				res.json({success: false});
+			}
+    	});
+	}			
+);
 
 router.route('/logout').post(function (req,res){
     req.session.destroy(function(err){
@@ -50,23 +89,27 @@ router.route('/logout').post(function (req,res){
         res.send('/');
     	console.log('session deleted. and redirected.');
     });
-	/*
-	console.log('logout route is called.');
-    if(req.session.user){
-        req.session.destroy(function(err){
-            if(err) {
-				console.log(err);
-			}
-			res.redirect('/');
-            console.log('session deleted. and redirected.');
-        });
-    }else{
-        // 로그인없이 로그아웃하는 경우는 일단 배제
-		res.redirect('/');
-		console.log('session already deleted. and redirected.');
-    }*/
 });
 
+router.route('/register').post(function(req,res){
+	console.log('Post register');
+    console.log(req.body);
+	var paramId = req.body.registerId;
+    var paramPwd = req.body.registerPwd;
+    console.log(paramId);
+	//insert into user values('hojun','123',null,null);
+    db.query('insert into user(id,pwd,investContract,companyContract) values( ?,?,null,null);',
+			[paramId,paramPwd], function(error,result){
+		if(error){
+			console.log(error); 
+			throw error;
+		} 
+		console.log(result);
+	});
+
+    res.redirect('/');
+
+});
 
 
 module.exports = router;
