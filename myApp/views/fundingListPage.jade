@@ -1,0 +1,63 @@
+
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title List - Crowd Funding
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/mobile.css', media='screen and (max-width : 568px)')
+    script(src='https://code.jquery.com/jquery-3.4.0.min.js')
+    script(type='text/javascript', src='/javascripts/mobile.js')
+    script(type='text/javascript', src='/javascripts/main.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+  body
+    #header
+      .usrInfo
+        ul
+          li
+            a.login(href='login') 로그인
+          li
+            a.register(href='register') 회원가입
+          li
+            a.logout(href='/') 로그아웃
+          li
+            a.list(href='fundingList') 투자관리
+      a.logo(href='/')
+        img(src='/images/Crowd-Funding.png', alt='')
+      ul#navigation
+        li
+          a(href='/') home
+        li
+          a(href='/about') about
+        li
+          a(href='/funding') funding
+        li
+          a(href='#') exchange
+    #body
+      div
+        .myPage
+          .myInvestContract
+            h2 투자용 스마트 컨트랙트
+            p.desc
+              | 투자용 스마트 컨트랙트란 투자자들을 위한 지갑입니다. 투자용 스마트 컨트랙트는 개인 당 Crowd-funding은 돈을 대신 환전하여 개인 투자용 스마트컨트랙트로 입금합니다.
+              | 투자용 스마트 컨트랙트를 다루기 위한 비밀번호는 오직 스마트컨트랙트 내에만 암호화(이더리움 해싱 알고리즘 sha3)되어 저장됩니다.
+          .investContractContainer
+            h3 투자용 스마트 컨트랙트 생성하기
+            p.desc2
+              | 현재 테스트용으로 생성되는 투자용 스마트 컨트랙트에는 2000wei 이더가 충전됩니다.
+            input(type='password', placeholder='contract 비밀번호')
+            input(type='password', placeholder='contract 비밀번호 재확인')
+            .deployInvestContract
+              button.investContractBtn 확인
+              #Loader(style='display: none;')
+            p.desc
+              | deploy 결과 출력
+          .myInvestList
+            h3 나의 투자용 스마트 컨트랙트
+            p.desc
+            li
+              | 컨트랙 정보
+            p
+    #footer
+
