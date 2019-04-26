@@ -117,25 +117,4 @@ $(document).ready(function(){
         return true;
 	});
 });
-/*
-$('.form-container').submit(function(e){
-        //e.preventDefault();
-
-	console.log('submit');
-	var form = $(this);
-    var data = form.serialize();
-
-	$.ajax({
-		url: "/loginPost",
-		type: "post",
-		data: data,
-		success: function(result){
-			$('.login').hide();
-		}
-	});
-	return true;
-});
-
-*/
-
 

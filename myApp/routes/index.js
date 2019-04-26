@@ -46,8 +46,10 @@ router.get('/register', function(req, res, next) {
 router.get('/fundingProject', function(req, res, next) {
     console.log('route for /funding/fundingProejct is called in fundingProject.js');
 	if(req.session.user){
+		//res.json({success: true});
 		res.render('fundingProject');
 	}else{
+	 	//res.json({success: false});
 		res.redirect('/login');
 	}
 });
@@ -92,23 +94,16 @@ router.route('/logout').post(function (req,res){
 });
 
 router.route('/register').post(function(req,res){
-	console.log('Post register');
-    console.log(req.body);
 	var paramId = req.body.registerId;
     var paramPwd = req.body.registerPwd;
-    console.log(paramId);
-	//insert into user values('hojun','123',null,null);
     db.query('insert into user(id,pwd,investContract,companyContract) values( ?,?,null,null);',
 			[paramId,paramPwd], function(error,result){
 		if(error){
 			console.log(error); 
-			throw error;
 		} 
 		console.log(result);
 	});
-
     res.redirect('/');
-
 });
 
 
