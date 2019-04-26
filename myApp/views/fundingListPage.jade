@@ -46,13 +46,12 @@ html
             h3 투자용 스마트 컨트랙트 생성하기
             p.desc2
               | 현재 테스트용으로 생성되는 투자용 스마트 컨트랙트에는 2000wei 이더가 충전됩니다.
-            input(type='password', placeholder='contract 비밀번호')
-            input(type='password', placeholder='contract 비밀번호 재확인')
+            input(type='password',class="investPwd1", placeholder='contract 비밀번호')
+            input(type='password',class="investPwd2", placeholder='contract 비밀번호 재확인')
             .deployInvestContract
               button.investContractBtn 확인
-              #Loader(style='display: none;')
+              #loader2
             p.desc
-              | deploy 결과 출력
           .myInvestList
             h3 나의 투자용 스마트 컨트랙트
             p.desc

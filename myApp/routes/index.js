@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var deploy = require('../../deploy.js');
 
 var express = require('express');
 var router = express.Router();
@@ -20,34 +19,31 @@ db.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log("route for / is called in index.js");
 	res.render('index');
 	//res.render('index', { title: 'Express' });
 });
 router.get('/login', function(req, res, next) {
-    console.log('route for /login is called in index.js');
     res.render('loginPage');
 });
 router.get('/about', function(req, res, next) {
-	console.log('route for /about is called in index.js');
     res.render('about');
 });
 
 router.get('/funding', function(req, res, next) {
-    console.log('route for /funding is called in index.js');
     res.render('funding');
 });
 
 router.get('/register', function(req, res, next) {
-    console.log('route for /regiser is called in index.js');
     res.render('register');
 });
 router.get('/fundingList', function(req, res, next) {
-    console.log('route for /fundingList is called in index.js');
-    res.render('fundingListPage');
+    if(req.session.user){
+        res.render('fundingListPage');
+    }else{
+        res.redirect('/login');
+    }
 });
 router.get('/fundingProject', function(req, res, next) {
-    console.log('route for /funding/fundingProejct is called in fundingProject.js');
 	if(req.session.user){
 		//res.json({success: true});
 		res.render('fundingProject');
@@ -59,7 +55,7 @@ router.get('/fundingProject', function(req, res, next) {
 
 
 /* post requests. */
-router.route('/deploy').post(require('./deploy.js'));
+//router.route('/deploy').post(require('./deploy.js'));
 
 router.route('/checkGoal').post(require('./checkGoal.js'));
 
@@ -69,7 +65,6 @@ router.route('/loginPost').post(function f (req,res){
 		db.query('select pwd from user where id =? ;',
             [paramId], function(error,result){
         	if(error){throw error;}
-        	console.log('pwd is'+result[0].pwd);
 
 			if(paramPwd == result[0].pwd){	// login success.
 				console.log('login success');
@@ -109,6 +104,7 @@ router.route('/register').post(function(req,res){
     res.redirect('/');
 });
 
+router.route('/deployInvest').post(require('./deployInvestor.js'))
 
 module.exports = router;
 

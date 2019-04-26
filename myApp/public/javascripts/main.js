@@ -47,6 +47,7 @@ $(document).ready(function(){
 	
 	// Button for checking the goal.
 	$("#loader").hide();
+	$("#loader2").hide();
 	$("#checkGoalBtn").click(function(){
 		myFunction(this);
 		$.ajax({
@@ -116,5 +117,42 @@ $(document).ready(function(){
         });
         return true;
 	});
+
+    $('.myPage .deployInvestContract .investContractBtn').click(function(){
+        
+		var a = $(".myPage .investContractContainer .investPwd1").val();
+        var b = $(".myPage .investContractContainer .investPwd2").val();
+		if(a!=b){
+			alert('비밀번호가 일치하지 않습니다.');
+			return false;
+		}
+		var pre = "<a href='https://rinkeby.etherscan.io/address/";
+		myFunction2(this);
+		$.ajax({
+            url: "/deployInvest",
+            type: "post",
+			data: a,
+            success: function(result){
+				myFunction2(this);
+				$(".myPage .investContractContainer").append("<p>주소"+result.data+"로 배포되었습니다.</p>");
+				$(".myPage .investContractContainer").append(pre+result.data+"'>contract 확인하기</a>");
+				
+			}
+        });
+		
+		var btn = $(this);
+        btn.prop('disabled',true);
+        window.setTimeout(function(){
+            btn.prop('disabled',false);
+        },6000);
+        return false;
+    });
+	function myFunction2(div) {
+        $("#loader2").toggle();
+    }
 });
+
+
+
+
 
