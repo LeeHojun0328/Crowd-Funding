@@ -158,24 +158,24 @@ body {
 /* register */
 #body .register-form-container .btn:hover{
 	opacity: 1;
-  }
-  #body .register-form-popup {
+}
+#body .register-form-popup {
 	  border: 2px solid #7caca9;
 	  margin-top: 60px;
 	  margin-bottom: 100px;
 	  padding: 20px 20px 40px;
 	  width: 80%;
 	  text-align: center;
-  }
+}
   
-  #body .register-form-container {
+#body .register-form-container {
 	  background-color: white;
 	  text-align: center;
 	  width: 100%;
-  }
+}
 
   
-  #body .register-form-container input, .register-form-container input[type=password] {
+#body .register-form-container input, .register-form-container input[type=password] {
 	  display: inline-block;
 	  width: 35%;
 	  padding: 15px 8px;
@@ -184,13 +184,13 @@ body {
 	  background: #f1f1f1;
 	  font-size: 14px;
 	  text-align: left;
-  }
+}
   
-  #body .register-form-container input[type=text]:focus, .register-form-container input[type=password]:focus {
+#body .register-form-container input[type=text]:focus, .register-form-container input[type=password]:focus {
 	background-color: #ddd;
-  }
+}
   
-  #body .register-form-container .register-btn {
+#body .register-form-container .register-btn {
 	  background-color: #4CAF50;
 	  font-size: 22px;
 	  color: white;
@@ -200,11 +200,25 @@ body {
 	cursor: pointer;
 	width: 80%;
 	opacity: 0.8;
-  }
+}
   
-  #body .register-form-container .btn:hover{
+#body .register-form-container .btn:hover{
 	opacity: 1;
-  }
+}
+
+/* funding list Page */
+#body > div .myPage {
+	margin: 0 auto;
+	padding: 30px 30px 0;
+	width: 90%;
+	display: block;
+	border: 1px solid #b9dad7;
+	margin-top: 60px;
+	margin-bottom: 10px;
+	padding: 20px 20px 40px;
+	text-align: left;
+}
+
 #body h1 {
 	display: block;
 	font-size: 20px;
