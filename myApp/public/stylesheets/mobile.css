@@ -177,7 +177,7 @@ body {
   
   #body .register-form-container input, .register-form-container input[type=password] {
 	  display: inline-block;
-	  width: 40%;
+	  width: 35%;
 	  padding: 15px 8px;
 	  margin: 20px 5px;
 	  border: none;
@@ -323,6 +323,7 @@ body {
 	height: 14px;
 	line-height: 14px;
 }
+/*
 #body form {
 	width: 100%;
 }
@@ -334,6 +335,7 @@ body {
 #body form #send {
 	padding: 10px;
 }
+*/
 #footer {
 	padding: 10px 0 25px;
 }
