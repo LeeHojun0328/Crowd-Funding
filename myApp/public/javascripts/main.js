@@ -45,7 +45,7 @@ $(document).ready(function(){
         $('.usrInfo .register').hide();	
 	}
 	
-	// Button for checking the goal.
+	// check project goal.
 	$("#loader").hide();
 	$("#loader2").hide();
 	$("#checkGoalBtn").click(function(){
@@ -53,7 +53,7 @@ $(document).ready(function(){
 		$.ajax({
         	url: "/checkGoal",
         	type: "post",
-        	data: {address: '0x30070a189bd36ddc3b511d15e2ad656dd2fbb6d3'},
+        	data: {address: '0x42658b31F1C5EEfD74c869dd2640591b00b22da7'},
         	success: function(result){
 				$("#checkGoal").text(result);
 				myFunction(this);
@@ -117,11 +117,12 @@ $(document).ready(function(){
         });
         return true;
 	});
-
-    $('.myPage .deployInvestContract .investContractBtn').click(function(){
+	
+	//deploy investor contract
+    $('.myPage .investContractBtn').click(function(){
         
-		var a = $(".myPage .investContractContainer .investPwd1").val();
-        var b = $(".myPage .investContractContainer .investPwd2").val();
+		var a = $(".myPage  .investPwd1").val();
+        var b = $(".myPage  .investPwd2").val();
 		if(a!=b){
 			alert('비밀번호가 일치하지 않습니다.');
 			return false;

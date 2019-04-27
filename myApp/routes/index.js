@@ -38,7 +38,24 @@ router.get('/register', function(req, res, next) {
 });
 router.get('/fundingList', function(req, res, next) {
     if(req.session.user){
-        res.render('fundingListPage');
+		var paramId = req.session.user.id;
+		var contractList = [];
+		var tnxList =[];
+        db.query('select investorContract from investor where id =? ;',
+            [paramId], function(error,result){
+            if(error){throw error;}
+			for(var i = 0 ; i < result.length ; i++){
+			    contractList.push(result[i].investorContract);
+				console.log(result[i].investorContract);
+			}
+			db.query('select tnxAddress from investor natural join funding;', function(error, result){
+            	if(error){throw error;}
+                for(var i = 0 ; i < result.length ; i++){
+                	tnxList.push(result[i].tnxAddress);
+                }
+                res.render('fundingListPage',{contractList: contractList, tnxList: tnxList});
+            }); 
+        });
     }else{
         res.redirect('/login');
     }
@@ -94,7 +111,7 @@ router.route('/logout').post(function (req,res){
 router.route('/register').post(function(req,res){
 	var paramId = req.body.registerId;
     var paramPwd = req.body.registerPwd;
-    db.query('insert into user(id,pwd,investContract,companyContract) values( ?,?,null,null);',
+    db.query('insert into user(id,pwd) values(?,?);',
 			[paramId,paramPwd], function(error,result){
 		if(error){
 			console.log(error); 

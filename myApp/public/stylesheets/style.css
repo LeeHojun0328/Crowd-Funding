@@ -332,6 +332,9 @@ p a:hover {
 #body > div .myPage .desc {
 	margin: 0 10px 40px;
 }
+#body > div .myPage .desclist {
+    margin: 0 10px 40px;
+}
 #body > div .myPage .desc2 {
 	margin: 10px ;
 }

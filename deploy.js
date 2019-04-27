@@ -25,7 +25,7 @@ var deploy = {};
 
 // 0xC74.. 지갑주소에서 새로운 company contract 배포
 deploy.deployCompany = function ( callback){
-	contractAbs.new("","",0,1000, {from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'})
+	contractAbs.new("","",0,5000, {from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'})
 	.then(function(instance){
 		company = instance;
 		callback(company.address);

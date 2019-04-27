@@ -41,11 +41,11 @@ html
             h2 투자용 스마트 컨트랙트
             p.desc
               | 투자용 스마트 컨트랙트란 투자자들을 위한 지갑입니다. 투자용 스마트 컨트랙트는 개인 당 Crowd-funding은 돈을 대신 환전하여 개인 투자용 스마트컨트랙트로 입금합니다.
-              | 투자용 스마트 컨트랙트를 다루기 위한 비밀번호는 오직 스마트컨트랙트 내에만 암호화(이더리움 해싱 알고리즘 sha3)되어 저장됩니다.
+              | 투자용 스마트 컨트랙트를 다루기 위한 비밀번호는 서버가 아닌 스마트컨트랙트 내에만 암호화(이더리움 해싱 알고리즘 sha3)되어 저장됩니다.
           .investContractContainer
             h3 투자용 스마트 컨트랙트 생성하기
             p.desc2
-              | 현재 테스트용으로 생성되는 투자용 스마트 컨트랙트에는 2000wei 이더가 충전됩니다.
+              | 현재 테스트용으로 생성되는 투자용 스마트 컨트랙트에는 2000wei 이더가 충전되며 배포는 약 20초가량 시간이 걸립니다.
             input(type='password',class="investPwd1", placeholder='contract 비밀번호')
             input(type='password',class="investPwd2", placeholder='contract 비밀번호 재확인')
             .deployInvestContract
@@ -55,8 +55,20 @@ html
           .myInvestList
             h3 나의 투자용 스마트 컨트랙트
             p.desc
-            li
-              | 컨트랙 정보
-            p
+              script.
+                var pre = "<a href='https://rinkeby.etherscan.io/address/";
+                var arr = "#{contractList}".split(',');
+                for(var i = 0 ; i < arr.length && arr[0] != "" ; i++){
+                //document.write(arr[i]+"<br>");
+                $(".myPage .myInvestList .desc").append(pre+arr[i]+"'>"+arr[i]+"</a><br>");
+                }
+            h3 투자 내역
+            p.desclist
+              script.
+                var pre = "https://rinkeby.etherscan.io/tx/";
+                var arr = "#{tnxList}".split(',');
+                for(var i = 0 ; i < arr.length && arr[0] != ""; i++){
+                $(".myPage .myInvestList .desclist").append(pre+arr[i]+"'>"+arr[i]+"</a><br>");
+                }
     #footer
 
