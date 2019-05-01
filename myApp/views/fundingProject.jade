@@ -35,39 +35,34 @@ html
           a(href='#') exchange
     #body
       div
-        img(src='/images/wallet.jpg', alt='')
         .article
-          h2 대한민국 대표 지갑, Monedero
-          p
-            | 휴대성을 극대화시킨 사이즈. 가로 120 mm 세로 70 mm의 지갑은 주머니, 가방에 넣어도 좋고, 한 손에 감기는 사이즈로 부담이 적습니다. 
+          img(src='/images/wallet.jpg', alt='')
+          .projectInfo
+            h2 대한민국 대표 지갑, Monedero
+            p
+              | 휴대성을 극대화시킨 사이즈. 가로 120 mm 세로 70 mm의 지갑은 주머니, 가방에 넣어도 좋고, 한 손에 감기는 사이즈로 부담이 적습니다. 천연 가죽소재로 패턴이 모두 달라 단 하나밖에 없는 희소성을 가집니다. 세상에 단 하나뿐인 지갑에 각인으로 특별함을 더할 수 있습니다.
+          .checkProject
+            h3 리워드 종류
+            input(type='checkbox', value='Bike')
+            | 1000wei 투자: 가죽지갑
             br
-            | 천연 가죽소재로 패턴이 모두 달라 단 하나밖에 없는 희소성을 가집니다. 세상에 단 하나뿐인 지갑에 각인으로 특별함을 더할 수 있습니다.
-          h3 리워드
-          p
-            | 1000wei 투자: 가죽지갑 
+            input(type='checkbox', value='Bike')
+            | 1500wei 투자: 가죽지갑 + 각인
             br
-            |  1500wei 투자: 가죽지갑 + 각인
-          h3
-            | 회사 smart contract (
-            a(href='https://rinkeby.etherscan.io/address/0x42658b31F1C5EEfD74c869dd2640591b00b22da7') smart contract on ethereum explorer
-            | )
-          div
+          .checkProject
+            h3
+              | 회사 스마트 컨트랙트 확인 (
+              a(href='https://rinkeby.etherscan.io/address/0x42658b31F1C5EEfD74c869dd2640591b00b22da7') smart contract on ethereum explorer
+              | )
+            p 약 6초의 시간이 소요됩니다. 이러디움 노드를 사용하여 현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.
             button#checkGoalBtn 금액 달성도 및 목표날짜 확인
             #loader
-          h4
-            | 약 6초의 시간이 소요됩니다. 
-            br
-            |  이러디움 노드를 사용하여 현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.
-          p#checkGoal
-          h3 잔액 확인하기
-          button 나의 이더 잔액 확인하기
-          br
-          p
-          h3 투자하기
-          input(type='checkbox', value='Bike')
-          | 1000wei 투자: 가죽지갑
-          br
-          input(type='checkbox', value='Bike')
-          | 1500wei 투자: 가죽지갑 + 각인
-          br
+            p#checkGoal => 
+        .fundingArticle
+          h3 나의 투자용 스마트 컨트랙트
+          p db에서 리스트 갖고와서 보여주기
+          button.getBalance 나의 이더 잔액 확인하기
+          #loader
+          p#checkBalance => 
+          button.fundingBtn 투자하기
     #footer
