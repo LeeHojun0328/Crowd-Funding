@@ -245,12 +245,25 @@ p a:hover {
 	height: auto;
 }
 
+/* funding project page */
 #body > div .article {
 	margin: 0 auto;
-	padding: 30px 30px 0;
-	width: 560px;
+	padding: 30px 50px;
+	width: 700px;
+	border: 1px solid #b9dad7;
 }
-#body > div .article  ul{
+.fundingArticle{
+	margin: 0 auto;
+	width: 700px;
+	padding: 30px 50px;
+}
+#body > div .article img{
+	display: block;
+	margin: 15px auto 70px auto;
+	border: 1px solid #000;
+
+}
+#body > div .article ul{
 	margin: 0 auto;
 	padding: 0;
 	width: 560px;
@@ -262,36 +275,31 @@ p a:hover {
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 25px;
 	font-weight: normal;
-	margin: 0 0 30px;
+	margin: 10 px;
 }
 #body > div .article h3 {
+	display: block;
 	color: #252525;
 	line-height: 24px;
-	margin: 0 0 10px;
+	margin: 40px 0 0 0;
 	padding: 0;
 }
 #body > div .article h4 {
 	color:  #292929;
-	display: inline-block;
+	display: block;
 	font-size: 11px;
 	font-weight: normal;
 	margin: 0 10px;
 	padding: 8px 0 10px;
 }
 #body > div .article p {
-	margin: 0 10px 30px;
+	margin: 5px 10px 10px;
 }
 #body > div .article input{
-	margin: 0 0 30px;
+	margin: 8px ;
 }
-#body > div .article div{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: center;
-}
-#body > div .article button{
+
+#body > div .article button, .getBalance{
 	background: #0ba39c;
 	border-radius: 6px;
 	color: #fff;
@@ -303,6 +311,34 @@ p a:hover {
 	text-decoration: none;
 	text-transform: uppercase;
 }
+.fundingBtn{
+	display: block;
+	margin: 80px auto 20px;
+	background-color: #4CAF50;
+	font-size: 22px;
+	color: white;
+  padding: 13px 20px;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  opacity: 0.8;
+}
+#loader {
+	display: inline-block;
+	position: relative;
+	top: 6px;
+	border: 4px solid #f3f3f3; /* Light grey */
+	border-top: 4px solid #102330; /* Blue */
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+  }
 
 
 /* funding list Page */
@@ -329,6 +365,7 @@ p a:hover {
 	margin: 0 0 10px;
 	padding: 0;
 }
+
 #body > div .myPage .desc {
 	margin: 0 10px 40px;
 }
@@ -364,7 +401,7 @@ p a:hover {
 	display: inline;
 }
 #loader2 {
-	display:inline-block;
+	  display:inline-block;
     border: 4px solid #f3f3f3; /* Light grey */
     border-top: 4px solid #102330; /* Blue */
     border-radius: 50%;
@@ -373,26 +410,6 @@ p a:hover {
     animation: spin 2s linear infinite;
 }
 
-/* projectFunding  */
-#loader {
-	border: 4px solid #f3f3f3; /* Light grey */
-	border-top: 4px solid #102330; /* Blue */
-	border-radius: 50%;
-	width: 15px;
-	height: 15px;
-	animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
-  }
-#body > div .article img {
-	display: inline;
-	border: 0ch;
-	height: 110px;
-	width: auto;
-}
 #body div ul {
 	margin: 0;
 	padding: 24px 10px 0;

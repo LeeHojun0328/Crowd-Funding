@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List - Crowd Funding</title>
-    <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
-    <link rel="stylesheet" type="text/css" href="../public/stylesheets/mobile.css" media="screen and (max-width : 568px)">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mobile.css" media="screen and (max-width : 568px)">
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-    <script type="text/javascript" src="../public/javascripts/mobile.js"></script>
-    <script type="text/javascript" src="../public/javascripts/main.js"></script>
+    <script type="text/javascript" src="/javascripts/mobile.js"></script>
+    <script type="text/javascript" src="/javascripts/main.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   </head>
   <body>
@@ -18,9 +18,9 @@
           <li><a class="login" href="login">로그인</a></li>
           <li><a class="register" href="register">회원가입</a></li>
           <li><a class="logout" href="/">로그아웃</a></li>
-          <li><a class="list" href="#">투자관리</a></li>
+          <li><a class="list" href="fundingList">투자관리</a></li>
         </ul>
-      </div><a class="logo" href="/"><img src="../public/images/Crowd-Funding.png" alt=""></a>
+      </div><a class="logo" href="/"><img src="/images/Crowd-Funding.png" alt=""></a>
       <ul id="navigation">
         <li><a href="/">home</a></li>
         <li><a href="/about">about</a></li>
@@ -31,36 +31,47 @@
     <div id="body">
       <div>
         <div class="myPage">
-            <div class=myInvestContract>
-                <h2>투자용 스마트 컨트랙트</h2>
-                <p class="desc">
-                    투자용 스마트 컨트랙트란 투자자들을 위한 지갑입니다. 투자용 스마트 컨트랙트는 개인 당 Crowd-funding은 돈을 대신 환전하여 개인 투자용 스마트컨트랙트로 입금합니다.
-                    투자용 스마트 컨트랙트를 다루기 위한 비밀번호는 오직 스마트컨트랙트 내에만 암호화(이더리움 해싱 알고리즘 sha3)되어 저장됩니다. 
-                </p>
+          <div class="myInvestContract">
+            <h2>투자용 스마트 컨트랙트</h2>
+            <p class="desc">
+              투자용 스마트 컨트랙트란 투자자들을 위한 지갑입니다. 투자용 스마트 컨트랙트는 개인 당 Crowd-funding은 돈을 대신 환전하여 개인 투자용 스마트컨트랙트로 입금합니다.
+              투자용 스마트 컨트랙트를 다루기 위한 비밀번호는 서버가 아닌 스마트컨트랙트 내에만 암호화(이더리움 해싱 알고리즘 sha3)되어 저장됩니다.
+            </p>
+          </div>
+          <div class="investContractContainer">
+            <h3>투자용 스마트 컨트랙트 생성하기</h3>
+            <p class="desc2">현재 테스트용으로 생성되는 투자용 스마트 컨트랙트에는 2000wei 이더가 충전되며 배포는 약 20초가량 시간이 걸립니다.</p>
+            <input class="investPwd1" type="password" placeholder="contract 비밀번호">
+            <input class="investPwd2" type="password" placeholder="contract 비밀번호 재확인">
+            <div class="deployInvestContract">
+              <button class="investContractBtn">확인</button>
+              <div id="loader2"></div>
             </div>
-            <div class="investContractContainer">
-                <h3>투자용 스마트 컨트랙트 생성하기</h3>
-                <p class="desc2">
-                        현재 테스트용으로 생성되는 투자용 스마트 컨트랙트에는 2000wei 이더가 충전됩니다.
-                </p>
-                <input type="password" placeholder="contract 비밀번호">
-                <input type="password" placeholder="contract 비밀번호 재확인">
-                <div class="deployInvestContract">
-                    <button class="investContractBtn">확인</button>
-                    <div id="Loader" style="display: none;"></div>
-                </div>
-                <p class="desc">
-                    deploy 결과 출력
-                </p>
-            </div>
-            <div class="myInvestList">
-                <h3>나의 투자용 스마트 컨트랙트</h3>
-                <p class="desc">
-                    <li>
-                        컨트랙 정보
-                    </li>
-                </p>
-            </div>
+            <p class="desc"></p>
+          </div>
+          <div class="myInvestList">
+            <h3>나의 투자용 스마트 컨트랙트</h3>
+            <p class="desc">
+              <script>
+                var pre = "<a href='https://rinkeby.etherscan.io/address/";
+                var arr = "".split(',');
+                for(var i = 0 ; i < arr.length && arr[0] != "" ; i++){
+                //document.write(arr[i]+"<br>");
+                $(".myPage .myInvestList .desc").append(pre+arr[i]+"'>"+arr[i]+"</a><br>");
+                }
+              </script>
+            </p>
+            <h3>투자 내역</h3>
+            <p class="desclist">
+              <script>
+                var pre = "https://rinkeby.etherscan.io/tx/";
+                var arr = "".split(',');
+                for(var i = 0 ; i < arr.length && arr[0] != ""; i++){
+                $(".myPage .myInvestList .desclist").append(pre+arr[i]+"'>"+arr[i]+"</a><br>");
+                }
+              </script>
+            </p>
+          </div>
         </div>
       </div>
     </div>

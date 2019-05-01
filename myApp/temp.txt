@@ -11,5 +11,4 @@ investor 주소
 깃허브로 디비 실행시 필요한 환경
 mysql 필요 및 root + 비밀번호 설정 또는 새로운 새로운 mysql 아이디+비밀번호를 DB연결 전 설정이 필요.
 
-web browser는 firefox, chrome, safari, IE9 이상에 최적화되어 있다.(이벤트 객체처리 등등)
-
+web browser는 firefox, chrome, safari, IE9 이상에 최적화되어 있다.(이벤트 객체처리 등등)!

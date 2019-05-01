@@ -238,14 +238,23 @@ body {
 	margin: 24px 0 30px;
 	width: 98%
 }
+
 #body > div .article {
+	padding: 5px;
+	width: 98%;
+}
+.fundingArticle{
 	padding: 0;
-	width: 100%;
+	width: 98%;
+}
+.fundingBtn{
+	width: 60%;
 }
 #body > div .article h2, #body > div .article h4 {
 	font-size: 18px;
 	font-weight: bold;
 }
+
 #body #featured {
 	overflow: hidden;
 	margin: 0 0 20px
