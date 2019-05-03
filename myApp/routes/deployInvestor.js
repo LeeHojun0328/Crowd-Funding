@@ -16,7 +16,7 @@ function obj (req, res ) {
         res.json({data: false});
         //res.render('fundingProject');
     }
-    deploy.deployInvestor(2000,function(addr){
+    deploy.deployInvestor(req.body.contractName, req.body.investPwd,2000,function(addr){
 		var paramId = req.session.user.id;
 		var contractName = req.body.contractName;
 		db.query('insert into investor(id,contractName, investorContract) values(?,?,?);',

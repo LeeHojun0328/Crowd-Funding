@@ -63,8 +63,19 @@ router.get('/fundingList', function(req, res, next) {
 });
 router.get('/fundingProject', function(req, res, next) {
 	if(req.session.user){
-		//res.json({success: true});
-		res.render('fundingProject');
+		var paramId = req.session.user.id;
+        var contractName = [];
+        var contractList = [];
+		db.query('select contractName,investorContract from investor where id =? ;',
+            [paramId], function(error,result){
+			if(error){throw error;}
+            for(var i = 0 ; i < result.length ; i++){
+                contractName.push(result[i].contractName);
+                contractList.push(result[i].investorContract);
+            }
+			//res.json({success: true});
+        	res.render('fundingProject',{contractName: contractName,contractList: contractList});
+			});
 	}else{
 	 	//res.json({success: false});
 		res.redirect('/login');

@@ -38,8 +38,8 @@ deploy.deployCompany = function ( callback){
 	});
 }
 
-deploy.deployInvestor = function (amount, callback){
-    contractAbs2.new("","", {from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'})
+deploy.deployInvestor = function (id, pwd,amount, callback){
+    contractAbs2.new(id,pwd, {from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'})
     .then(function(instance){
         investor = instance;
         callback(investor.address);
