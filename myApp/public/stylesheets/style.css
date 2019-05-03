@@ -252,11 +252,6 @@ p a:hover {
 	width: 700px;
 	border: 1px solid #b9dad7;
 }
-.fundingArticle{
-	margin: 0 auto;
-	width: 700px;
-	padding: 30px 50px;
-}
 #body > div .article img{
 	display: block;
 	margin: 15px auto 70px auto;
@@ -310,6 +305,18 @@ p a:hover {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+}
+.fundingArticle{
+	margin: 0 auto;
+	width: 700px;
+	padding: 30px 50px;
+}
+.fundingArticle select{
+
+	margin: 5px 10px 25px;
+	width: 250px;
+	height: 30px;
+	font-size: 15px;
 }
 .fundingBtn{
 	display: block;
