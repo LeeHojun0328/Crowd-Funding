@@ -35,12 +35,14 @@ $(document).ready(function(){
 		console.log('status: logout');
 		$('.usrInfo .logout').hide();
 		$('.usrInfo .list').hide();
+		$('.usrInfo .project').hide();
 		$('.usrInfo .login').show();
 		$('.usrInfo .register').show();
 	}else{
 		console.log('status: login');
 		$('.usrInfo .logout').show();
 		$('.usrInfo .list').show();
+		$('.usrInfo .project').show();
         $('.usrInfo .login').hide();
         $('.usrInfo .register').hide();	
 	}
