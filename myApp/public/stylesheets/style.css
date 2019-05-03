@@ -114,6 +114,46 @@ p a:hover {
 	padding: 0 0 30px;
 	text-align: left;
 }
+
+#body .about-border {
+	margin: 0 auto;
+	padding: 30px 50px;
+	width: 700px;
+	border: 1px solid #b9dad7;
+}
+#body > div .about img{
+	display: inline-block;
+	margin: 20px 10px;
+	border: 1px ;
+	width: 160px;
+}
+#body > div .about h2 {
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 10 px;
+}
+#body > div .about h3 {
+	display: block;
+	color: #252525;
+	line-height: 24px;
+	margin: 40px 0 0 0;
+	padding: 0;
+}
+#body > div .about h4 {
+	color:  #292929;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	margin: 0 10px;
+	padding: 8px 0 10px;
+}
+#body > div .about p {
+	margin: 5px 10px 10px;
+}
+
+
+
 /* Code for login_page.html */
 #body .form-popup {
 	border: 2px solid #7caca9;

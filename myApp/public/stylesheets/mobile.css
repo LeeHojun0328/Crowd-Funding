@@ -238,7 +238,14 @@ body {
 	margin: 24px 0 30px;
 	width: 98%
 }
-
+#body > .about-border {
+	padding: 10px;
+	width: 90%;
+}
+#body > div .about {
+	padding: 5px;
+	width: 95%;
+}
 #body > div .article {
 	padding: 5px;
 	width: 98%;
