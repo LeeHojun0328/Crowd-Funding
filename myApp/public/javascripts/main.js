@@ -120,19 +120,23 @@ $(document).ready(function(){
 	
 	//deploy investor contract
     $('.myPage .investContractBtn').click(function(){
-        
+        var data ={};
 		var a = $(".myPage  .investPwd1").val();
         var b = $(".myPage  .investPwd2").val();
+		var contractName = $(".myPage  .contractName").val();
 		if(a!=b){
 			alert('비밀번호가 일치하지 않습니다.');
 			return false;
 		}
+		data.investPwd = a;
+		data.contractName = contractName;
+		console.log(data);
 		var pre = "<a href='https://rinkeby.etherscan.io/address/";
 		myFunction2(this);
 		$.ajax({
             url: "/deployInvest",
             type: "post",
-			data: a,
+			data: data,
             success: function(result){
 				myFunction2(this);
 				$(".myPage .investContractContainer").append("<p>주소"+result.data+"로 배포되었습니다.</p>");

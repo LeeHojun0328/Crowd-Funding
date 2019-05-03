@@ -18,9 +18,9 @@ function obj (req, res ) {
     }
     deploy.deployInvestor(2000,function(addr){
 		var paramId = req.session.user.id;
-		var paramPwd = req.session.user.pwd;
-		db.query('insert into investor(id,investorContract) values(?,?);',
-			[paramId,addr], function(error,result){
+		var contractName = req.body.contractName;
+		db.query('insert into investor(id,contractName, investorContract) values(?,?,?);',
+			[paramId,contractName,addr], function(error,result){
 				if(error){console.log(error);}
 			console.log(result);
 		});

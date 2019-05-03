@@ -39,21 +39,22 @@ router.get('/register', function(req, res, next) {
 router.get('/fundingList', function(req, res, next) {
     if(req.session.user){
 		var paramId = req.session.user.id;
+		var contractName = [];
 		var contractList = [];
 		var tnxList =[];
-        db.query('select investorContract from investor where id =? ;',
+        db.query('select contractName,investorContract from investor where id =? ;',
             [paramId], function(error,result){
             if(error){throw error;}
 			for(var i = 0 ; i < result.length ; i++){
+				contractName.push(result[i].contractName);
 			    contractList.push(result[i].investorContract);
-				console.log(result[i].investorContract);
 			}
 			db.query('select tnxAddress from investor natural join funding;', function(error, result){
             	if(error){throw error;}
                 for(var i = 0 ; i < result.length ; i++){
                 	tnxList.push(result[i].tnxAddress);
                 }
-                res.render('fundingListPage',{contractList: contractList, tnxList: tnxList});
+                res.render('fundingListPage',{contractName: contractName,contractList: contractList, tnxList: tnxList});
             }); 
         });
     }else{

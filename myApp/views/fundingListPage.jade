@@ -46,6 +46,7 @@ html
             h3 투자용 스마트 컨트랙트 생성하기
             p.desc2
               | 현재 테스트용으로 생성되는 투자용 스마트 컨트랙트에는 2000wei 이더가 충전되며 배포는 약 20초가량 시간이 걸립니다.
+            input(type='text',class="contractName", placeholder='contract 이름(영어)')
             input(type='password',class="investPwd1", placeholder='contract 비밀번호')
             input(type='password',class="investPwd2", placeholder='contract 비밀번호 재확인')
             .deployInvestContract
@@ -57,10 +58,11 @@ html
             p.desc
               script.
                 var pre = "<a href='https://rinkeby.etherscan.io/address/";
-                var arr = "#{contractList}".split(',');
-                for(var i = 0 ; i < arr.length && arr[0] != "" ; i++){
+                var addr = "#{contractList}".split(',');
+                var contractName = "#{contractName}".split(',');
+                for(var i = 0 ; i < addr.length && addr[0] != "" ; i++){
                 //document.write(arr[i]+"<br>");
-                $(".myPage .myInvestList .desc").append(pre+arr[i]+"'>"+arr[i]+"</a><br>");
+                $(".myPage .myInvestList .desc").append(pre+addr[i]+"'>"+contractName[i]+": "+addr[i]+"</a><br>");
                 }
             h3 투자 내역
             p.desclist
