@@ -133,6 +133,12 @@ router.route('/register').post(function(req,res){
     res.redirect('/');
 });
 
+var balance = require('../../getBalance.js');
+router.route('/investorBalance').post(function(req,res){
+	balance.investorBalance(req.body.addr, function(r){
+		res.send({'balance':r});
+    });
+});
 router.route('/deployInvest').post(require('./deployInvestor.js'))
 
 module.exports = router;

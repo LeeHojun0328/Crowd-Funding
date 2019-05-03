@@ -70,7 +70,22 @@ $(document).ready(function(){
 	function myFunction(div) {
 		$("#loader").toggle();
 	}
-    
+	
+	$('.investorBalance').click(function(){
+        $('.fundingArticle #loader').toggle();i
+		var data = $(".fundingArticle select option:selected").text().split(' ');
+		var data = data[data.length-1];
+		console.log(data);
+		$.ajax({
+            url: "/investorBalance",
+            type: "post",
+            data: {addr:data},
+            success: function(result){
+                $('.fundingArticle #loader').toggle();
+				$(".fundingArticle #checkBalance").text("=> "+result.balance+"wei 잔액이 있습니다.");
+            }
+        });	
+	});
 
 	// post login 
 	$('.form-container .btn').click(function(e){

@@ -294,7 +294,7 @@ p a:hover {
 	margin: 8px ;
 }
 
-#body > div .article button, .getBalance{
+#body > div .article button, .investorBalance{
 	background: #0ba39c;
 	border-radius: 6px;
 	color: #fff;
@@ -313,7 +313,7 @@ p a:hover {
 }
 .fundingArticle select{
 
-	margin: 5px 10px 25px;
+	margin: 5px 10px 10px;
 	width: 250px;
 	height: 30px;
 	font-size: 15px;
@@ -324,11 +324,15 @@ p a:hover {
 	background-color: #4CAF50;
 	font-size: 22px;
 	color: white;
-  padding: 13px 20px;
-  border: none;
-  cursor: pointer;
-  width: 40%;
-  opacity: 0.8;
+  	padding: 13px 20px;
+  	border: none;
+  	cursor: pointer;
+ 	width: 40%;
+	opacity: 0.8;
+}
+.fundingArticle #checkBalance{
+	margin: 5px 10px 25px;
+	font-weight: bold;
 }
 #loader {
 	display: inline-block;

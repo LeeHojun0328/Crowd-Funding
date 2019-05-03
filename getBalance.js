@@ -24,7 +24,7 @@ balance.investorBalance = function (addr,callback){
 		var ba = instance.getBalance();
 		return ba;
 	}).then(function(result){
-		callback(result);
+		callback(result.toNumber());
 		console.log(result.toNumber());
 	});
 }
@@ -34,7 +34,7 @@ balance.companyBalance = function (addr,callback){
         var ba = instance.getBalance();
 		return ba;
     }).then(function(result){
-        callback(result);
+        callback(result.toNumber());
 		console.log(result.toNumber());
     });
 }
