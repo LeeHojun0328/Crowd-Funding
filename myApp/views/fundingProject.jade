@@ -60,7 +60,9 @@ html
             p#checkGoal => 
         .fundingArticle
           h3 나의 투자용 스마트 컨트랙트
-          p db에서 리스트 갖고와서 보여주기
+          select
+            option addr1
+            option addr2
           button.getBalance 나의 이더 잔액 확인하기
           #loader
           p#checkBalance => 

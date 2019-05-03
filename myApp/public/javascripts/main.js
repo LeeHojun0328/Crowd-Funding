@@ -46,7 +46,7 @@ $(document).ready(function(){
 	}
 	
 	// check project goal.
-	$("#loader").hide();
+	$("#loader, .fundingArticle #loader").hide();
 	$("#loader2").hide();
 	$("#checkGoalBtn").click(function(){
 		myFunction(this);
