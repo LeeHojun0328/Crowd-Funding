@@ -64,6 +64,18 @@ html
                 //document.write(arr[i]+"<br>");
                 $(".myPage .myInvestList .desc").append(pre+addr[i]+"'>"+contractName[i]+": "+addr[i]+"</a><br>");
                 }
+            .fundingArticle(style="padding: 0px; margin:-5px;")
+              select
+                script.
+                  var pre = "<option value ="
+                  var contractName = "#{contractName}".split(',');
+                  var addr = "#{contractList}".split(',');
+                  for(var i = 0 ; i < addr.length && addr[0] != "" ; i++){
+                  $(".fundingArticle select").append(pre+addr[i]+"'>"+contractName[i]+": "+addr[i]+"</option>");
+                  }
+              button.investorBalance 나의 이더 잔액 확인하기
+              #loader
+              p#checkBalance =>
             h3 투자 내역
             p.desclist
               script.
