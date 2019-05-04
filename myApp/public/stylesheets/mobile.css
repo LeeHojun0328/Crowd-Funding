@@ -274,6 +274,29 @@ body {
 	width: 90%;
 }
 
+/* registerProject page*/ 
+#body .registerProject-border{
+	padding: 10px;
+	width: 90%;
+}
+#body .registerproject-container input[type=text], input[type=password], input[type=number], input[type=date]{
+	font-size: 12px;
+	display: block;
+}
+#body .registerproject-container .rewardName, .rewardPrice{
+	width: 70%;
+}
+#body .registerproject-container .label{
+	width: 15%;
+	font-size: 12px;
+}
+
+#body .registerproject-container  .registerProjectBtn{
+	width: 60%;
+}
+
+
+
 #body #featured {
 	overflow: hidden;
 	margin: 0 0 20px

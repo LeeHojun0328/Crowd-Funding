@@ -506,6 +506,80 @@ p a:hover {
 	width: 230px;
 	border: 1px solid rgb(162, 168, 135);
 }
+
+/* reigsterProject page */
+#body .registerProject-border{
+	margin: 0 auto;
+	padding: 30px 30px 0;
+	width: 750px;
+	display: block;
+	border: 1px solid #b9dad7;
+	margin-top: 60px;
+	margin-bottom: 10px;
+	padding: 20px 20px 40px;
+	text-align: left;
+}
+#body .registerproject-container > h1{
+	display: block;
+	margin: 15px 10px 15px 5px;
+}
+#body .registerproject-container > h3{
+	display: inline;
+	margin: 15px 10px 15px 5px;
+}
+#body .registerproject-container table{
+	margin: 30px 20px;
+	width: 90%;
+	text-align: left;
+}
+
+#body .registerproject-container .label{
+	width: 30%;
+}
+#body .registerproject-container input[type=text], input[type=password], input[type=number], input[type=date] {
+ 
+  padding: 15px;
+  margin: 5px 0 5px 0;
+  display: inline-block;
+  border: none;
+	background: #f1f1f1;
+	font-size: 13px;
+}
+#body .registerproject-container .projectName, .goalPrice, .goalDate{
+	width: 50%;
+}
+#body .registerproject-container .rewardName, .rewardPrice{
+	width: 25%;
+}
+
+#body .registerproject-container input[type=text]:focus, input[type=password]:focus,input[type=number]:focus, input[type=date] :focus{
+  background-color: #ddd;
+  outline: none;
+}
+#body .registerproject-container .rewardEnter, .rewardDelete{
+	margin: 30px auto 20px;
+	background-color: #4CAF50;
+	font-size: 13px;
+	color: white;
+  padding: 10px 18px;
+  border: none;
+  cursor: pointer;
+ 	width: 15%;
+	opacity: 0.8;
+}
+#body .registerproject-container .registerProjectBtn{
+	display: block;
+	margin: 30px auto 10px;
+	background-color: #4CAF50;
+	font-size: 18px;
+	color: white;
+  padding: 13px 20px;
+  border: none;
+  cursor: pointer;
+ 	width: 50%;
+	opacity: 0.8;
+}
+
 #body div ul {
 	margin: 0;
 	padding: 24px 10px 0;

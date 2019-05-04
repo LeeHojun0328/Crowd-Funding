@@ -1,0 +1,94 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Project - Crowd Funding
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/mobile.css', media='screen and (max-width : 568px)')
+    script(src='https://code.jquery.com/jquery-3.4.0.min.js')
+    script(type='text/javascript', src='/javascripts/mobile.js')
+    script(type='text/javascript', src='/javascripts/main.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+  body
+    #header
+      .usrInfo
+        ul
+          li
+            a.login(href='login') 로그인
+          li
+            a.register(href='register') 회원가입
+          li
+            a.logout(href='/') 로그아웃
+          li
+            a.list(href='fundingList') 투자관리
+          li
+            a.project(href='project') 프로젝트관리
+      a.logo(href='/')
+        img(src='/images/Crowd-Funding.png', alt='')
+      ul#navigation
+        li
+          a(href='/') home
+        li
+          a(href='/about') about
+        li
+          a(href='/funding') funding
+        li
+          a(href='#') exchange
+    #body
+      .registerProject-border
+        .registerproject-container
+          div(style='text-align:center; margin: 30px auto 60px auto;')
+            h1 프로젝트 등록
+          form(action='/registerProject', method='POST')
+            table
+              tbody
+                tr
+                  td.label
+                    h3 프로젝트 이름
+                  td.projectName
+                    input(type='text', placeholder='프로젝트 이름', name='projectName', required='')
+                tr
+                  td.label(style='position: relative; top: -30px;')
+                    h3 프로젝트 설명
+                  td
+                    textarea.projectDesc(name='', id='', cols='35', rows='10')
+                tr
+                  td.label
+                    h3 제품사진
+                  td
+                    input.projectImg(type='file', name='photo')
+                tr
+                  td.label
+                    h3 목표금액
+                  td
+                    input.goalPrice(type='number', placeholder='목표금액(wei)', name='goalPrice')
+                tr
+                  td.label
+                    h3(style='display:inline;') 목표날짜
+                    | (YYYY.MM.DD)
+                  td
+                    input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate')
+                tr
+                  td.label
+                    h3 리워드
+                  td
+                    div(style='display: inline-block;')
+                      input.rewardName(type='text', placeholder='리워드 이름', name='rewardName')
+                      input.rewardPrice(type='number', placeholder='리워드 가격(wei)', name='rewardPrice')
+                      button.rewardEnter 등록
+                      button.rewardDelete 제거
+                      p
+                        | reward name & reward price
+                        br
+                        |                                 reward name & reward price
+                tr
+                  td.label
+                    h3 스마트컨트랙트 비밀번호
+                  td
+                    input.rewardName(type='password', placeholder='비밀번호', name='rewardName')
+                    input.rewardName(type='password', placeholder='비밀번호 재확인', name='rewardName')
+                tr
+                  td(colspan='2', style='text-align:center;')
+                    button.registerProjectBtn 프로젝트 등록 및 스마트컨트랙트 생성
+    #footer

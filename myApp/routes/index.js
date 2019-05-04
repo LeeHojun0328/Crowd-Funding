@@ -36,6 +36,9 @@ router.get('/funding', function(req, res, next) {
 router.get('/register', function(req, res, next) {
     res.render('register');
 });
+router.get('/register', function(req, res, next) {
+    res.render('registerProject');
+});
 router.get('/fundingList', function(req, res, next) {
     if(req.session.user){
 		var paramId = req.session.user.id;
