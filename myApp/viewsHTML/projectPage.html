@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List - Crowd Funding</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mobile.css" media="screen and (max-width : 568px)">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="/javascripts/mobile.js"></script>
+    <script type="text/javascript" src="/javascripts/main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="usrInfo">
+        <ul>
+          <li><a class="login" href="login">로그인</a></li>
+          <li><a class="register" href="register">회원가입</a></li>
+          <li><a class="logout" href="/">로그아웃</a></li>
+          <li><a class="list" href="fundingList">투자관리</a></li>
+          <li><a class="project" href="project">프로젝트관리</a></li>
+        </ul>
+      </div><a class="logo" href="/"><img src="/images/Crowd-Funding.png" alt=""></a>
+      <ul id="navigation">
+        <li><a href="/">home</a></li>
+        <li><a href="/about">about</a></li>
+        <li><a href="/funding">funding</a></li>
+        <li><a href="#">exchange</a></li>
+      </ul>
+    </div>
+    <div id="body">
+        <div class="project-border">
+            <div class="projectIntro">
+                <h2>프로젝트 등록</h2>
+                <h3>프로젝트 등록</h3>
+                <p class="desc">
+                    기업은 프로젝트를 등록하여 투자받을 제품을 소개합니다. 프로젝트 이름, 설명, 그리고 리워드를 소개하고 기업용 스마트컨트랙트를 생성합니다. 
+                </p>
+                <h3>기업용 스마트컨트랙트</h3>
+                <p class="desc">
+                    기업용 스마트컨트랙트는 투자자용 스마트컨트랙트로부터 투자받기 위한 기업용 계좌입니다. 프로젝트당 하나의 스마트컨트랙트만 생성가능합니다.
+                    기업용 스마트컨트랙트를 다루기 위한 비밀번호는 서버가 아닌 스마트컨트랙트 내에만 암호화(이더리움 해싱 알고리즘 sha3)되어 저장됩니다.
+                    따라서, 비밀번호 분실 시 찾는 것은 불가능하며 비밀번호는 안전하게 보관되어야 합니다.
+                </p>
+                <h3>투자목표 달성 </h3>
+                <p>
+                    투자의 성공 및 실패는 기업용 스마트컨트랙트 내에서 확인합니다. 기한 내에 목표금액 달성 시, 해당 프로젝트의 기업만이 투자받은 금액을 사용가능합니다. 
+                    목표 실패 시, 투자받은 금액은 스마트컨트랙트에 의해 투자자들에게 돌려줍니다. 
+                </p>
+                <button class="registerProjectBtn">프로젝트 등록하기</button>
+            </div>
+            <div class="projectList">
+                <h2>프로젝트 관리</h2>
+                <ul>
+                    <li>
+                        <p>projectNmae</p>
+                        <p>Project Goal</p>
+                        <p>total price</p>
+                    </li>
+                    <li>
+                        <p>projectNmae</p>
+                        <p>Project Goal</p>
+                        <p>total price</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

@@ -364,9 +364,9 @@ p a:hover {
 	background-color: #4CAF50;
 	font-size: 22px;
 	color: white;
-  	padding: 13px 20px;
-  	border: none;
-  	cursor: pointer;
+  padding: 13px 20px;
+  border: none;
+  cursor: pointer;
  	width: 40%;
 	opacity: 0.8;
 }
@@ -461,6 +461,51 @@ p a:hover {
     animation: spin 2s linear infinite;
 }
 
+/* project page */
+#body .project-border{
+	margin: 0 auto;
+	padding: 30px 30px 0;
+	width: 750px;
+	display: block;
+	border: 1px solid #b9dad7;
+	margin-top: 60px;
+	margin-bottom: 10px;
+	padding: 20px 20px 40px;
+	text-align: left;
+}
+#body .projectIntro > h2 {
+	margin: 15px 10px 15px 5px;
+}
+#body .projectIntro > h3 {
+	margin: 40px 10px 10px;
+}
+#body .projectIntro > p {
+	margin-left: 15px;
+}
+#body .projectIntro > button{
+	display: block;
+	margin: 30px auto 20px;
+	background-color: #4CAF50;
+	font-size: 22px;
+	color: white;
+  padding: 13px 20px;
+  border: none;
+  cursor: pointer;
+ 	width: 40%;
+	opacity: 0.8;
+}
+#body .projectList{
+	margin-top: 120px;
+}
+#body .projectList ul{
+	width: 700px;
+}
+#body .projectList ul li{
+	display: inline-block;
+	margin: 10px;
+	width: 230px;
+	border: 1px solid rgb(162, 168, 135);
+}
 #body div ul {
 	margin: 0;
 	padding: 24px 10px 0;
