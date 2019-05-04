@@ -81,7 +81,13 @@ router.get('/fundingProject', function(req, res, next) {
 		res.redirect('/login');
 	}
 });
-
+router.get('/project', function(req, res, next) {
+    if(req.session.user){
+		res.render('projectPage');
+	}else{
+		res.redirect('/login');
+	}
+});
 
 /* post requests. */
 //router.route('/deploy').post(require('./deploy.js'));
