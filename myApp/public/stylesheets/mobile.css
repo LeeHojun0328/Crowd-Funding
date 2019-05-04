@@ -283,7 +283,7 @@ body {
 	font-size: 12px;
 	display: block;
 }
-#body .registerproject-container .rewardName, .rewardPrice{
+#body .registerproject-container .rewardName, .rewardPrice, .contractPwd1, .contractPwd2{
 	width: 70%;
 }
 #body .registerproject-container .label{

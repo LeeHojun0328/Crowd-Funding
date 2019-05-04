@@ -528,8 +528,8 @@ p a:hover {
 	margin: 15px 10px 15px 5px;
 }
 #body .registerproject-container table{
-	margin: 30px 20px;
-	width: 90%;
+	margin: 30px 5px;
+	width: 95%;
 	text-align: left;
 }
 
@@ -539,7 +539,6 @@ p a:hover {
 #body .registerproject-container input[type=text], input[type=password], input[type=number], input[type=date] {
  
   padding: 15px;
-  margin: 5px 0 5px 0;
   display: inline-block;
   border: none;
 	background: #f1f1f1;
@@ -548,8 +547,10 @@ p a:hover {
 #body .registerproject-container .projectName, .goalPrice, .goalDate{
 	width: 50%;
 }
-#body .registerproject-container .rewardName, .rewardPrice{
-	width: 25%;
+#body .registerproject-container .rewardName, .rewardPrice, .contractPwd1, .contractPwd2{
+    margin-top: 5px;
+	margin-right: 5px;
+	width: 20%;
 }
 
 #body .registerproject-container input[type=text]:focus, input[type=password]:focus,input[type=number]:focus, input[type=date] :focus{
@@ -557,7 +558,7 @@ p a:hover {
   outline: none;
 }
 #body .registerproject-container .rewardEnter, .rewardDelete{
-	margin: 30px auto 20px;
+	margin: 10px 2px 2px 2px;
 	background-color: #4CAF50;
 	font-size: 13px;
 	color: white;
