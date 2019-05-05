@@ -40,7 +40,7 @@ html
         .registerproject-container
           div(style='text-align:center; margin: 30px auto 60px auto;')
             h1 프로젝트 등록
-          form(action='/registerProject', method='POST')
+          form(action='/registerProject',enctype="multipart/form-data", method='POST')
             table
               tbody
                 tr
@@ -90,5 +90,6 @@ html
                     input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='rewardName',required='')
                 tr
                   td(colspan='2', style='text-align:center;')
-                    button.registerProjectBtn 프로젝트 등록 및 스마트컨트랙트 생성
+                    input.registerProjectBtn(type='submit', value='프로젝트 등록 및 스마트컨트랙트 생성')
+                    #loader
     #footer

@@ -148,6 +148,28 @@ router.route('/investorBalance').post(function(req,res){
 		res.send({'balance':r});
     });
 });
+
+var multer  = require('multer');
+var fs = require('fs');
+var storage = multer.diskStorage({
+	destination: function(req,file,callback){
+		callback(null,'./uploads/')
+	},
+	filename: function(req,file,callback){
+		callback(null,file.originalname + Date.now())
+	}
+});
+var upload = multer({storage: storage});
+router.route('/registerProject').post(upload.single('photo'),function(req,res){
+	try{
+		console.log("upload는 "+upload);
+		console.log(req.body);
+		console.log(req.file);
+		res.sendFile(__dirname+'/../'+req.file.path);
+	}catch(err){
+		console.log(err);
+	}
+});
 router.route('/deployInvest').post(require('./deployInvestor.js'))
 
 module.exports = router;
