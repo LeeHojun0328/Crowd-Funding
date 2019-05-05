@@ -20,7 +20,7 @@ obj.goalDate = function (addr){
     contractAbs.at(addr).then(function(instance){
         return instance.getGoalDate();
     }).then(function(result){
-        console.log(result);
+        console.log(result.toNumber());
     });
 }
 

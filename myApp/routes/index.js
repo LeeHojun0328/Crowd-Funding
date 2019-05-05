@@ -149,6 +149,9 @@ router.route('/investorBalance').post(function(req,res){
     });
 });
 
+
+/* response to registerPage */
+
 var multer  = require('multer');
 var fs = require('fs');
 var storage = multer.diskStorage({
@@ -165,11 +168,22 @@ router.route('/registerProject').post(upload.single('photo'),function(req,res){
 		console.log("upload는 "+upload);
 		console.log(req.body);
 		console.log(req.file);
-		res.sendFile(__dirname+'/../'+req.file.path);
+		
+		res.send();
 	}catch(err){
 		console.log(err);
 	}
 });
+
+var deploy = require('../../deploy.js');
+router.route('/deployCompany').post(function(req,res){
+	console.log(req.body);
+	var goalDate = parseInt(new Date(req.body.goalDate).getTime().toString().substring(0, 10));
+	deploy.deployCompany(req.body.contractName, req.body.contractPwd,goalDate,req.body.goalPrice ,function(addr){
+		res.send(addr);
+	});
+});
+
 router.route('/deployInvest').post(require('./deployInvestor.js'))
 
 module.exports = router;

@@ -71,9 +71,9 @@ html
                 tr
                   td.label(style='position: relative; top: -45px')
                     h3 기업용 스마트컨트랙트
-                    p(style='width:70%;') 블록체인 특성으로 오른쪽 입력값들은 수정 불가능합니다.
+                    p(style='width:70%;') 블록체인 특성으로 오른쪽 입력값들은 수정 불가능하며 목표날짜의 시간은 오전9시를 기준으로 합니다.
                   td
-                    input.contractName(type='password', placeholder='contract 이름', name='contractPwd1', required='', style='display: block; margin-top: 10px;')
+                    input.contractName(type='text', placeholder='contract 이름', name='contractPwd1', required='', style='display: block; margin-top: 10px;')
                     input.contractPwd1(type='password', placeholder='비밀번호', name='contractPwd1', required='')
                     input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='contractPwd2', required='')
                     div
@@ -81,6 +81,7 @@ html
                       input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate', required='')
                       button.deployCompany(type='button') 생성
                       #loader
+                      p.deployedCompany
                 tr
                   td(colspan='2', style='text-align:center')
                     input.registerProjectBtn(type='button', value='프로젝트 등록')

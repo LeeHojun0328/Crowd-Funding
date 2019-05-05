@@ -177,13 +177,82 @@ $(document).ready(function(){
 
 	/* manage reward list */
 	$('.rewardEnter').click(function(){
-		$('.rewardList').append("<h4>"+$('.rewardName').val()+" & "+$('.rewardPrice').val()+"wei</h4>");
+		if($('.rewardList h4').length > 4){
+			alert('최대 리워드 수는 5가지 입니다.');
+		}else if($('.rewardName').val() == "" || $('.rewardPrice').val() == ""){
+			alert('리워드정보를 입력해주세요');
+		}else{
+			$('.rewardList').append("<h4>"+$('.rewardName').val()+"&nbsp; "+$('.rewardPrice').val()+"wei</h4>");
+		}
 	});
 	$('.rewardDelete').click(function(){
 		$('.rewardList h4').last().remove();
 	});
-	
-	$('')
+
+	var isDeployed =false ;
+	$('button.deployCompany').click(function(){
+		var contractName = $('input.contractName').val();
+		var a = $('input.contractPwd1').val();
+		var b = $('input.contractPwd2').val();
+		var goalPrice = $('input.goalPrice').val();
+		var goalDate = $('input.goalDate').val();
+		console.log("날짜는 "+goalDate);
+		if(a!=b){
+			alert('비밀번호가 일치하지 않습니다.');
+			return false;
+		}
+		if(contractName == "" ||  a == "" || goalPrice =="" || goalDate == ""){
+			alert('값을 모두 입력해주세요');
+			return false;
+		}
+		myFunction(this);
+        $.ajax({
+            url: "/deployCompany",
+            type: "post",
+            data: {
+				contractName: contractName,
+				contractPwd: a,
+				goalPrice: goalPrice,
+				goalDate: goalDate
+			},
+            success: function(result){
+                myFunction(this);
+				isDeployed = true;
+                alert('기업용 스마트컨트택트가 생성되었습니다.');
+            	var pre = "<a href='https://rinkeby.etherscan.io/address/";
+                $("p.deployedCompany").append(pre+result+"\'&nbsp; target='_blank'>"+contractName+": "+result+"</a><br>");
+			}
+        });
+        var btn = $(this);
+        btn.prop('disabled',true);
+        return false;
+    });
+
+
+	$('input.registerProjectBtn').click(function(){
+		if($('.rewardName').val() == "" || $('.rewardPrice').val() == ""){
+			alert('리워드정보를 입력해주세요');
+		}else if(isDeployed){
+			alert('기업용 스마트컨트랙트를 생성해주세요');
+		}else{
+			$.ajax({
+        	    url: "/registerProject",
+        	    type: "post",
+        	    data: data,
+        	    success: function(result){
+        	        myFunction2(this);
+					alert('등록되었습니다.');
+					window.location.replace('/project');
+        	    }
+        	});
+        	var btn = $(this);
+        	btn.prop('disabled',true);
+        	window.setTimeout(function(){
+        	    btn.prop('disabled',false);
+        	},6000);
+        	return true;
+		}
+	});	
 });
 
 
