@@ -546,9 +546,10 @@ p a:hover {
 }
 #body .registerproject-container .projectName, .goalPrice, .goalDate{
 	width: 50%;
+	margin-top: 10px;
 }
 #body .registerproject-container .rewardName, .rewardPrice, .contractPwd1, .contractPwd2{
-    margin-top: 5px;
+  margin-top: 10px;
 	margin-right: 5px;
 	width: 20%;
 }
@@ -557,7 +558,7 @@ p a:hover {
   background-color: #ddd;
   outline: none;
 }
-#body .registerproject-container .rewardEnter, .rewardDelete{
+#body .registerproject-container .rewardEnter, .rewardDelete, .deployCompany{
 	margin: 10px 2px 2px 2px;
 	background-color: #4CAF50;
 	font-size: 13px;
@@ -570,14 +571,14 @@ p a:hover {
 }
 #body .registerproject-container .registerProjectBtn{
 	display: block;
-	margin: 30px auto 10px;
+	margin: 60px auto 10px;
 	background-color: #4CAF50;
 	font-size: 18px;
 	color: white;
   padding: 13px 20px;
   border: none;
   cursor: pointer;
- 	width: 50%;
+ 	width: 30%;
 	opacity: 0.8;
 }
 

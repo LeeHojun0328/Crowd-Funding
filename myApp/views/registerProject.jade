@@ -38,9 +38,9 @@ html
     #body
       .registerProject-border
         .registerproject-container
-          div(style='text-align:center; margin: 30px auto 60px auto;')
+          div(style='text-align:center; margin: 30px auto 60px auto')
             h1 프로젝트 등록
-          form(action="/registerProject",enctype="multipart/form-data")
+          form(action='/registerProject', enctype='multipart/form-data', method='POST')
             table
               tbody
                 tr
@@ -49,7 +49,7 @@ html
                   td.projectName
                     input(type='text', placeholder='프로젝트 이름', name='projectName', required='')
                 tr
-                  td.label(style='position: relative; top: -30px;')
+                  td.label(style='position: relative; top: -30px')
                     h3 프로젝트 설명
                   td
                     textarea.projectDesc(name='', id='', cols='30', rows='10')
@@ -57,36 +57,32 @@ html
                   td.label
                     h3 제품사진
                   td
-                    input.projectImg(type='file', name='photo',required='')
+                    input.projectImg(type='file', name='photo', required='')
                 tr
                   td.label
                     h3 리워드
                   td
-                    div(style='display: inline-block;')
+                    div(style='display: inline-block')
                       input.rewardName(type='text', placeholder='리워드 이름', name='rewardName')
                       input.rewardPrice(type='number', placeholder='가격(wei)', name='rewardPrice')
                       button.rewardEnter(type='button') 등록
                       button.rewardDelete(type='button') 제거
                       p.rewardList
                 tr
-                  td.label
-                    h3 목표금액
+                  td.label(style='position: relative; top: -45px')
+                    h3 기업용 스마트컨트랙트
+                    p(style='width:70%;') 블록체인 특성으로 오른쪽 입력값들은 수정 불가능합니다.
                   td
-                    input.goalPrice(type='number', placeholder='목표금액(wei)', name='goalPrice',required='')
+                    input.contractName(type='password', placeholder='contract 이름', name='contractPwd1', required='', style='display: block; margin-top: 10px;')
+                    input.contractPwd1(type='password', placeholder='비밀번호', name='contractPwd1', required='')
+                    input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='contractPwd2', required='')
+                    div
+                      input.goalPrice(type='number', placeholder='투자목표 금액(wei)', name='goalPrice', required='')
+                      input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate', required='')
+                      button.deployCompany(type='button') 생성
+                      #loader
                 tr
-                  td.label
-                    h3(style='display:inline;') 목표날짜
-                    | (YYYY.MM.DD)
-                  td
-                    input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate',required='')
-                tr
-                  td.label
-                    h3 스마트컨트랙트 비밀번호
-                  td
-                    input.contractPwd1(type='password', placeholder='비밀번호', name='contractPwd1',required='')
-                    input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='contractPwd2',required='')
-                tr
-                  td(colspan='2', style='text-align:center;')
-                    input.registerProjectBtn(type='button', value='프로젝트 등록 및 스마트컨트랙트 생성')
+                  td(colspan='2', style='text-align:center')
+                    input.registerProjectBtn(type='button', value='프로젝트 등록')
                     #loader
     #footer

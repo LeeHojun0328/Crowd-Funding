@@ -286,6 +286,10 @@ body {
 #body .registerproject-container .rewardName, .rewardPrice, .contractPwd1, .contractPwd2{
 	width: 70%;
 }
+#body .registerproject-container .rewardEnter, .rewardDelete, .deployCompany{
+	width: 25%;
+	padding: 5px;
+}
 #body .registerproject-container .label{
 	width: 15%;
 	font-size: 12px;

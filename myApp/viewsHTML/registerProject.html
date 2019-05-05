@@ -35,7 +35,7 @@
           <div style="text-align:center; margin: 30px auto 60px auto">
             <h1>프로젝트 등록</h1>
           </div>
-          <form action="/registerProject" method="POST" enctype="multipart/form-data">
+          <form action="/registerProject" enctype="multipart/form-data" method="POST">
             <table>
               <tbody>
                 <tr>
@@ -64,46 +64,38 @@
                 </tr>
                 <tr>
                   <td class="label">
-                    <h3>목표금액</h3>
-                  </td>
-                  <td>
-                    <input class="goalPrice" type="number" placeholder="목표금액(wei)" name="goalPrice" required="">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="label">
-                    <h3 style="display:inline">목표날짜</h3>(YYYY.MM.DD)
-                  </td>
-                  <td>
-                    <input class="goalDate" type="date" placeholder="목표날짜(YYYY.MM.DD)" name="goalDate" required="">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="label">
                     <h3>리워드</h3>
                   </td>
                   <td>
                     <div style="display: inline-block">
-                      <input class="rewardName" type="text" placeholder="리워드 이름" name="rewardName" required="">
-                      <input class="rewardPrice" type="number" placeholder="리워드 가격(wei)" name="rewardPrice" required="">
-                      <button class="rewardEnter">등록</button>
-                      <button class="rewardDelete">제거</button>
-                      <p>reward name & reward price<br>                                reward name & reward price</p>
+                      <input class="rewardName" type="text" placeholder="리워드 이름" name="rewardName">
+                      <input class="rewardPrice" type="number" placeholder="가격(wei)" name="rewardPrice">
+                      <button class="rewardEnter" type="button">등록</button>
+                      <button class="rewardDelete" type="button">제거</button>
+                      <p class="rewardList"></p>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td class="label">
-                    <h3>스마트컨트랙트 비밀번호</h3>
+                  <td class="label" style="position: relative; top: -45px">
+                    <h3>기업용 스마트컨트랙트</h3>
+                    <p style="width:70%;">블록체인 특성으로 오른쪽 입력값들은 수정 불가능합니다.</p>
                   </td>
                   <td>
-                    <input class="contractPwd1" type="password" placeholder="비밀번호" name="rewardName" required="">
-                    <input class="contractPwd2" type="password" placeholder="비밀번호 재확인" name="rewardName" required="">
+                    <input class="contractName" type="password" placeholder="contract 이름" name="contractPwd1" required="" style="display: block; margin-top: 10px;"> 
+                    <input class="contractPwd1" type="password" placeholder="비밀번호" name="contractPwd1" required="">
+                    <input class="contractPwd2" type="password" placeholder="비밀번호 재확인" name="contractPwd2" required="">
+                    <div>
+                      <input class="goalPrice" type="number" placeholder="투자목표 금액(wei)" name="goalPrice" required="">
+                      <input class="goalDate" type="date" placeholder="목표날짜(YYYY.MM.DD)" name="goalDate" required="">
+                      <button class="deployCompany" type="button">생성</button>
+                      <div id="loader"></div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="2" style="text-align:center">
-                    <input type="submit" class="registerProjectBtn" value="프로젝트 등록 및 스마트컨트랙트 생성">
+                    <input class="registerProjectBtn" type="button" value="프로젝트 등록">
                     <div id="loader"></div>
                   </td>
                 </tr>
