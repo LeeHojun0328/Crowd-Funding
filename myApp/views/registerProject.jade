@@ -40,7 +40,7 @@ html
         .registerproject-container
           div(style='text-align:center; margin: 30px auto 60px auto;')
             h1 프로젝트 등록
-          form(action='/registerProject',enctype="multipart/form-data", method='POST')
+          form(action="/registerProject",enctype="multipart/form-data")
             table
               tbody
                 tr
@@ -60,6 +60,16 @@ html
                     input.projectImg(type='file', name='photo',required='')
                 tr
                   td.label
+                    h3 리워드
+                  td
+                    div(style='display: inline-block;')
+                      input.rewardName(type='text', placeholder='리워드 이름', name='rewardName')
+                      input.rewardPrice(type='number', placeholder='가격(wei)', name='rewardPrice')
+                      button.rewardEnter(type='button') 등록
+                      button.rewardDelete(type='button') 제거
+                      p.rewardList
+                tr
+                  td.label
                     h3 목표금액
                   td
                     input.goalPrice(type='number', placeholder='목표금액(wei)', name='goalPrice',required='')
@@ -71,25 +81,12 @@ html
                     input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate',required='')
                 tr
                   td.label
-                    h3 리워드
-                  td
-                    div(style='display: inline-block;')
-                      input.rewardName(type='text', placeholder='리워드 이름', name='rewardName',required='')
-                      input.rewardPrice(type='number', placeholder='리워드 가격(wei)', name='rewardPrice',required='')
-                      button.rewardEnter 등록
-                      button.rewardDelete 제거
-                      p
-                        | reward name & reward price
-                        br
-                        |                                 reward name & reward price
-                tr
-                  td.label
                     h3 스마트컨트랙트 비밀번호
                   td
-                    input.contractPwd1(type='password', placeholder='비밀번호', name='rewardName',required='')
-                    input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='rewardName',required='')
+                    input.contractPwd1(type='password', placeholder='비밀번호', name='contractPwd1',required='')
+                    input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='contractPwd2',required='')
                 tr
                   td(colspan='2', style='text-align:center;')
-                    input.registerProjectBtn(type='submit', value='프로젝트 등록 및 스마트컨트랙트 생성')
+                    input.registerProjectBtn(type='button', value='프로젝트 등록 및 스마트컨트랙트 생성')
                     #loader
     #footer

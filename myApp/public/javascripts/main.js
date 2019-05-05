@@ -172,6 +172,18 @@ $(document).ready(function(){
 	function myFunction2(div) {
         $("#loader2").toggle();
     }
+
+	/* registerProject page */
+
+	/* manage reward list */
+	$('.rewardEnter').click(function(){
+		$('.rewardList').append("<h4>"+$('.rewardName').val()+" & "+$('.rewardPrice').val()+"wei</h4>");
+	});
+	$('.rewardDelete').click(function(){
+		$('.rewardList h4').last().remove();
+	});
+	
+	$('')
 });
 
 
