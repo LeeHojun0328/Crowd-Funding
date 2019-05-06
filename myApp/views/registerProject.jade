@@ -7,6 +7,7 @@ html
     link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
     link(rel='stylesheet', type='text/css', href='/stylesheets/mobile.css', media='screen and (max-width : 568px)')
     script(src='https://code.jquery.com/jquery-3.4.0.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js', integrity='sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i', crossorigin='anonymous')
     script(type='text/javascript', src='/javascripts/mobile.js')
     script(type='text/javascript', src='/javascripts/main.js')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
@@ -45,9 +46,9 @@ html
               tbody
                 tr
                   td.label
-                    h3 프로젝트 이름
-                  td.projectName
-                    input(type='text', placeholder='프로젝트 이름', name='projectName', required='')
+                    h3 프로젝트 제목
+                  td
+                    input.projectName(type='text', placeholder='프로젝트 이름', name='projectName', required='')
                 tr
                   td.label(style='position: relative; top: -30px')
                     h3 프로젝트 설명
@@ -63,7 +64,7 @@ html
                     h3 리워드
                   td
                     div(style='display: inline-block')
-                      input.rewardName(type='text', placeholder='리워드 이름', name='rewardName')
+                      input.rewardName(type='text', placeholder='리워드', name='rewardName')
                       input.rewardPrice(type='number', placeholder='가격(wei)', name='rewardPrice')
                       button.rewardEnter(type='button') 등록
                       button.rewardDelete(type='button') 제거
@@ -73,9 +74,9 @@ html
                     h3 기업용 스마트컨트랙트
                     p(style='width:70%;') 블록체인 특성으로 오른쪽 입력값들은 수정 불가능하며 목표날짜의 시간은 오전9시를 기준으로 합니다.
                   td
-                    input.contractName(type='text', placeholder='contract 이름', name='contractPwd1', required='', style='display: block; margin-top: 10px;')
-                    input.contractPwd1(type='password', placeholder='비밀번호', name='contractPwd1', required='')
-                    input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='contractPwd2', required='')
+                    input.contractName(type='text', placeholder='contract ID', name='contractID', required='', style='display: block; margin-top: 10px;')
+                    input.contractPwd1(type='password', placeholder='비밀번호', name='contractPwd1')
+                    input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='contractPwd2')
                     div
                       input.goalPrice(type='number', placeholder='투자목표 금액(wei)', name='goalPrice', required='')
                       input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate', required='')
@@ -84,6 +85,6 @@ html
                       p.deployedCompany
                 tr
                   td(colspan='2', style='text-align:center')
-                    input.registerProjectBtn(type='button', value='프로젝트 등록')
+                    button.registerProjectBtn(type='submit', value='프로젝트 등록') 프로젝트 등록
                     #loader
     #footer
