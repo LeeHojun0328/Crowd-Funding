@@ -68,6 +68,9 @@ router.get('/fundingList', function(req, res, next) {
         res.redirect('/login');
     }
 });
+
+
+//You can make an investment on this page
 router.get('/fundingProject', function(req, res, next) {
 	if(req.session.user){
 		var paramId = req.session.user.id;
@@ -88,13 +91,51 @@ router.get('/fundingProject', function(req, res, next) {
 		res.redirect('/login');
 	}
 });
+
+// Project page.
+// This page introduces and manages projects.
 router.get('/project', function(req, res, next) {
     if(req.session.user){
-		res.render('projectPage');
+		db.query('select distinct companyContract from company natural join project where id = ?;',
+			[req.session.user.id],function(error, companyContract){
+				if(error) console.log(error);
+				var objArr = [];
+				var count = 0 ;
+				if(companyContract.length == 0 ){
+					res.render('projectPage');
+				}
+				for(var i = 0 ; i < companyContract.length; i++){
+					db.query('select distinct projectName, imgLocation, goalAmount, goalDate from project where companyContract = ?;'
+						,[companyContract[i].companyContract],function(error, result){
+							if(error) console.log(error);
+							console.log(result);
+							console.log(result[0].projectName);
+							var obj = [];
+							obj.push(result[0].projectName);
+							obj.push(result[0].imgLocation);
+							obj.push(result[0].goalAmount);
+							obj.push(result[0].goalDate);
+							objArr.push(obj);
+							count += 1;
+							if(count == companyContract.length){
+								console.log('send objArr');
+								console.log(objArr);
+								res.render('projectPage',{lists: objArr});
+							}
+
+						});
+				}
+
+			});
+
 	}else{
 		res.redirect('/login');
 	}
 });
+
+
+
+
 
 /* post requests. */
 //router.route('/deploy').post(require('./deploy.js'));
@@ -156,7 +197,7 @@ router.route('/investorBalance').post(function(req,res){
 
 /* response to registerPage */
 
-// multer module to receive a img file. 
+// multer module to receive a img file from client.
 var multer  = require('multer');
 var fs = require('fs');
 var storage = multer.diskStorage({
@@ -177,19 +218,19 @@ function setFile(name,data){
 	return "uploads\/"+name+".txt";
 }
 
+// Response to http post request (/registerProject)
 router.route('/registerProject').post(upload.single('photo'),function(req,res){
 	try{
 		console.log(req.body);
 		console.log(req.file);
 		var descPath = setFile(req.session.user.id+Date.now(), req.body.projectInfo);
 		var reward = req.body.reward;
-
+		
+		// insert into data company table.
 		db.query('insert into company(id,contractName, companyContract) values(?,?,?);',
             [req.session.user.id,req.body.contractID,req.body.addr], function(error,result){
-        	console.log('insert into company');
-			console.log(reward);
-			console.log(reward.length);
 			for(var i = 0 ; i < reward.length ; i++){
+				
 				// separate rewardName from 'reward'
 				var rewardName = "";
 				var words = reward[i].split(' ');
@@ -197,15 +238,18 @@ router.route('/registerProject').post(upload.single('photo'),function(req,res){
 					rewardName += words[j]+" ";
 				}
 
-				console.log([req.body.projectName,req.body.contractID, req.body.addr, descPath,req.file.path
-                    , req.body.goalPrice, req.body.goalDate,rewardName, words[words.length-1].split('wei')[0]]);
+				// separate rewardPrice from 'reward'
+				var rewardPrice = parseInt(words[words.length-1].split('wei')[0]);
+				
+				
+				//insert into data project table.
+				console.log(req.file);
 				db.query('insert into project(projectName,contractName, companyContract, infoLocation, imgLocation,goalAmount,goalDate, rewardName, rewardPrice) values(?,?,?,?,?,?,?,?,?);',
-					[req.body.projectName,req.body.contractID, req.body.addr, descPath,req.file.path
-					, req.body.goalPrice, req.body.goalDate,rewardName, parseInt(words[words.length-1].split('wei')[0])],function(error,result){
-						console.log('insert into project');
+					[req.body.projectName,req.body.contractID, req.body.addr, descPath,req.file.filename
+					, req.body.goalPrice, req.body.goalDate,rewardName, rewardPrice],function(error,result){
 						console.log(result);
 						if(error) console.log(error);
-						res.send();
+						res.send(); // redirect back page. 
 					});
 			}
 			if(error){
@@ -217,6 +261,8 @@ router.route('/registerProject').post(upload.single('photo'),function(req,res){
 	}
 });
 
+// Response to http post request. 
+// and deploy company smart contract to ethereum network. 
 var deploy = require('../../deploy.js');
 router.route('/deployCompany').post(function(req,res){
 	 if(req.session.user){	
@@ -229,6 +275,8 @@ router.route('/deployCompany').post(function(req,res){
 	}
 });
 
+// Response to http post request.
+// and deploy investor smart contract to ethereum network.
 router.route('/deployInvest').post(require('./deployInvestor.js'))
 
 module.exports = router;

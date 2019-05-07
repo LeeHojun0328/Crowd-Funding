@@ -57,6 +57,7 @@ html
                 tr
                   td.label
                     h3 제품사진
+                    p(style='width:70%;')
                   td
                     input.projectImg(type='file', name='photo', required='')
                 tr
@@ -82,6 +83,7 @@ html
                       input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate', required='')
                       button.deployCompany(type='button') 생성
                       #loader
+                      p 스마트컨트랙트 생성은 약 20초가량 시간이 걸립니다.
                       p.deployedCompany
                 tr
                   td(colspan='2', style='text-align:center')

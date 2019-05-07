@@ -272,6 +272,7 @@ body {
 }
 #body .projectList ul{
 	width: 90%;
+	text-align: center;
 }
 
 /* registerProject page*/ 

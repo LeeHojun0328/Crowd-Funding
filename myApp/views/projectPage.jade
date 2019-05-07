@@ -55,12 +55,23 @@ html
         .projectList
           h2 프로젝트 관리
           ul
-            li
-              p projectNmae
-              p Project Goal
-              p total price
-            li
-              p projectNmae
-              p Project Goal
-              p total price
     #footer
+  script.
+    var temp = "#{lists}".split(',');
+    var name;
+    var img;
+    var gAmount;
+    var gDate;
+    console.log(temp);
+    console.log(temp.length/4);
+    for(var i = 0 ; i<temp.length/4 && temp.length != 1 ; i++){
+      name = temp[i*4];
+      img = temp[i*4+1];
+      gAmount = temp[i*4+2];
+      gDate = temp[i*4+3];
+      $('.projectList ul').append('<li></li>');
+      $('.projectList ul li').last().append("<img src='\/"+img+"'/>");
+      $('.projectList ul li').last().append("<p>"+name+" 프로젝트</p>");
+      $('.projectList ul li').last().append("<p>목표금액: "+gAmount+"</p>");
+      $('.projectList ul li').last().append("<p>목표날짜: "+gDate+"</p>");
+    }
