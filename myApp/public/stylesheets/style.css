@@ -115,6 +115,7 @@ p a:hover {
 	text-align: left;
 }
 
+/* about page */
 #body .about-border {
 	margin: 0 auto;
 	padding: 30px 50px;
@@ -152,9 +153,19 @@ p a:hover {
 	margin: 5px 10px 10px;
 }
 
+/* fundingGallery */
+#body .fundingGallery > h2{
+	margin: 15px 0px 20px 15px;
+	font-size: 25px;
+}
+#body .gAmount, .gDate{
+	color: #0ba39c;
+    font-weight: bold;
+	margin: 0 10px 5px 10px;
+    height: 20px;
+}
 
-
-/* Code for login_page.html */
+/* login page */
 #body .form-popup {
 	border: 2px solid #7caca9;
 	margin-top: 60px;
@@ -635,7 +646,7 @@ p a:hover {
 	height: auto;
 }
 #body div ul li .figure:hover img {
-	opacity: 1;
+	opacity: 0.8;
 }
 #body div ul li div {
 	float: left;
@@ -772,7 +783,8 @@ p a:hover {
 	margin-top: 5px;;
 	margin-left: auto;
 	margin-right: auto;
-	width: 95%;
+	width: 260px;
+	height: 177px;
 	border: 1px solid  #898989;
 	display: block;
 	padding: 0;

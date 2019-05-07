@@ -36,45 +36,27 @@ html
         li
           a(href='#') exchange
     #body
-      ul.gallery
-        p
+      ul.fundingGallery
         h2 Funding list
-        p
-        br
-        br
-        li
-          a(href='/fundingProject')
-            img(src='images/wallet.jpg', alt='')
-          p
-            | 대한민국 대표 지갑, Monedero
-          .company-goal
-            span.goal-amount 1000 wei
-            span.goal-date , 4/5
-        li
-          a(href='/fundingProject')
-            img(src='images/watch.jpg', alt='')
-          p
-            | 2차 펀딩 성공! Relojh 시계
-          .company-goal
-            span.goal-amount 1000 wei
-            span.goal-date , 4/10
-        li
-          a(href='/fundingProject')
-            img(src='images/quadrocopter.png', alt='')
-          p
-            | 한 번 충전시 사용시간 10시간! 
-            br
-            | 페이드론
-          .company-goal
-            span.goal-amount 1000 wei
-            span.goal-date , 5/5
-        li
-          a(href='/fundingProject')
-            img(src='images/bread.jpg', alt='')
-          p
-            | 신라호텔 출신 브랜드 빵
-          .company-goal
-            span.goal-amount 1000 wei
-            span.goal-date , 4/29
     #footer
+  script.
+    var temp = "#{lists}".split(',');
+    var name;
+    var img;
+    var gAmount;
+    var gDate;
+    console.log(temp);
+    console.log(temp.length/4);
+    for(var i = 0 ; i<temp.length/4 && temp.length != 1 ; i++){
+      name = temp[i*4];
+      img = temp[i*4+1];
+      gAmount = temp[i*4+2];
+      gDate = temp[i*4+3];
+      var Link = "<a href='/fundingProject?name=" + name+"'";
+      $('.fundingGallery').append('<li></li>');
+      $('.fundingGallery li').last().append(Link+"><img src='\/"+img+"'/></a>");
+      $('.fundingGallery li').last().append("<p>"+name+" 프로젝트</p>");
+      $('.fundingGallery li').last().append("<p class='gAmount'>목표금액: "+gAmount+"wei</p>");
+      $('.fundingGallery li').last().append("<p class='gDate'>목표날짜: "+gDate+"</p>");
+    }
 

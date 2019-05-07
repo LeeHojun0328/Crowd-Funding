@@ -30,7 +30,19 @@ router.get('/about', function(req, res, next) {
 });
 
 router.get('/funding', function(req, res, next) {
-    res.render('funding');
+    db.query('select distinct projectName, imgLocation, goalAmount, goalDate from project'
+		,function(error, result){
+			var objArr = [];
+			console.log(result);
+			for(var i = 0 ; i < result.length; i++){
+				objArr.push(result[i].projectName);
+				objArr.push(result[i].imgLocation);
+				objArr.push(result[i].goalAmount);
+				objArr.push(result[i].goalDate);
+			}
+			
+			res.render('funding',{lists: objArr});	
+		});
 });
 
 router.get('/register', function(req, res, next) {
@@ -44,7 +56,7 @@ router.get('/registerProject', function(req, res, next) {
 	}
 });
 router.get('/fundingList', function(req, res, next) {
-    if(req.session.user){
+	if(req.session.user){
 		var paramId = req.session.user.id;
 		var contractName = [];
 		var contractList = [];
@@ -72,6 +84,7 @@ router.get('/fundingList', function(req, res, next) {
 
 //You can make an investment on this page
 router.get('/fundingProject', function(req, res, next) {
+	console.log(req.query);
 	if(req.session.user){
 		var paramId = req.session.user.id;
         var contractName = [];
