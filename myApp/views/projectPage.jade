@@ -53,7 +53,7 @@ html
             | 목표 실패 시, 투자받은 금액은 스마트컨트랙트에 의해 투자자들에게 돌려줍니다.
           button.registerProjectBtn(type='button', onclick="location.href='/registerProject' ") 프로젝트 등록하기
         .projectList
-          h2 프로젝트 관리
+          h2 나의 프로젝트 관리
           ul
     #footer
   script.
@@ -72,6 +72,6 @@ html
       $('.projectList ul').append('<li></li>');
       $('.projectList ul li').last().append("<img src='\/"+img+"'/>");
       $('.projectList ul li').last().append("<p>"+name+" 프로젝트</p>");
-      $('.projectList ul li').last().append("<p>목표금액: "+gAmount+"</p>");
+      $('.projectList ul li').last().append("<p>목표금액: "+gAmount+"wei</p>");
       $('.projectList ul li').last().append("<p>목표날짜: "+gDate+"</p>");
     }
