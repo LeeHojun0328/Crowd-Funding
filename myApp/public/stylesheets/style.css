@@ -357,6 +357,10 @@ p a:hover {
 	text-decoration: none;
 	text-transform: uppercase;
 }
+#body .projectInfo iframe{
+	border: 0;
+	width: 100%;
+}
 .fundingArticle{
 	margin: 0 auto;
 	width: 700px;
