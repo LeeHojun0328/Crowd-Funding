@@ -77,7 +77,6 @@ $(document).ready(function(){
         $('.fundingArticle #loader').toggle();i
 		var data = $(".fundingArticle select option:selected").text().split(' ');
 		var data = data[data.length-1];
-		console.log(data);
 		$.ajax({
             url: "/investorBalance",
             type: "post",
@@ -106,7 +105,8 @@ $(document).ready(function(){
 				if(result.success){
 					$.cookie('user','2');
 					alert('로그인되었습니다.');	
-					window.location.replace('/');
+					//window.location.replace('/');
+					window.history.back();
 					console.log('status: login');
 				}else{
 					alert('아이디 또는 비밀번호가 틀렸습니다.');
@@ -129,7 +129,7 @@ $(document).ready(function(){
 				//document.cookie = "user=;";
 				$.cookie('user','1');
 				alert("로그아웃되었습니다.");
-				//window.location.replace('/');
+				window.location.replace('/');
             }
         });
         return true;

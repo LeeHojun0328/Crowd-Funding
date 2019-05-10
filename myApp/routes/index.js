@@ -33,14 +33,12 @@ router.get('/funding', function(req, res, next) {
     db.query('select distinct projectName, imgLocation, goalAmount, goalDate from project'
 		,function(error, result){
 			var objArr = [];
-			console.log(result);
 			for(var i = 0 ; i < result.length; i++){
 				objArr.push(result[i].projectName);
 				objArr.push(result[i].imgLocation);
 				objArr.push(result[i].goalAmount);
 				objArr.push(result[i].goalDate);
 			}
-			
 			res.render('funding',{lists: objArr});	
 		});
 });
@@ -81,26 +79,45 @@ router.get('/fundingList', function(req, res, next) {
     }
 });
 
-
+// Fungind project page.
 //You can make an investment on this page
+
 router.get('/fundingProject', function(req, res, next) {
 	console.log(req.query);
 	if(req.session.user){
 		var paramId = req.session.user.id;
         var contractName = [];
         var contractList = [];
+		var project = [];
+		var projectDesc;
+		var reward = [];
 		db.query('select contractName,investorContract from investor where id =? ;',
             [paramId], function(error,result){
-			if(error){throw error;}
-            for(var i = 0 ; i < result.length ; i++){
-                contractName.push(result[i].contractName);
-                contractList.push(result[i].investorContract);
-            }
-			//res.json({success: true});
-        	res.render('fundingProject',{contractName: contractName,contractList: contractList});
+				if(error) console.log(error);
+            	for(var i = 0 ; i < result.length ; i++){
+            	    contractName.push(result[i].contractName);
+            	    contractList.push(result[i].investorContract);
+            	}
+				db.query('select * from project where projectName = ? ;',
+					[req.query.name],function(error, result){
+						if(error) console.log(error);
+						console.log(result);
+                        project.push(result[0].projectName);
+                        project.push(result[0].companyContract);
+						project.push(result[0].infoLocation);
+                        project.push(result[0].imgLocation);
+                        project.push(result[0].goalAmount);
+                        project.push(result[0].goalDate);
+                        for(var j = 0 ; j < result.length ; j++){
+                            reward.push(result[j].rewardName);
+                            reward.push(result[j].rewardPrice);
+                            reward.push('`');
+                        }
+                        res.render('fundingProject',
+                                {contractName: contractName,contractList: contractList, project: project, reward: reward});	
+					});	
 			});
 	}else{
-	 	//res.json({success: false});
 		res.redirect('/login');
 	}
 });
@@ -121,8 +138,6 @@ router.get('/project', function(req, res, next) {
 					db.query('select distinct projectName, imgLocation, goalAmount, goalDate from project where companyContract = ?;'
 						,[companyContract[i].companyContract],function(error, result){
 							if(error) console.log(error);
-							console.log(result);
-							console.log(result[0].projectName);
 							var obj = [];
 							obj.push(result[0].projectName);
 							obj.push(result[0].imgLocation);
@@ -138,9 +153,7 @@ router.get('/project', function(req, res, next) {
 
 						});
 				}
-
 			});
-
 	}else{
 		res.redirect('/login');
 	}
@@ -210,6 +223,7 @@ router.route('/investorBalance').post(function(req,res){
 
 /* response to registerPage */
 
+
 // multer module to receive a img file from client.
 var multer  = require('multer');
 var fs = require('fs');
@@ -225,17 +239,15 @@ var upload = multer({storage: storage});
 
 // create and write text file for project description.
 function setFile(name,data){
-	fs.writeFile("./uploads/"+name+".txt", data, function(err){
+	fs.writeFile(name+".txt", data, function(err){
 		if(err) console.log(err);
 	});
-	return "uploads\/"+name+".txt";
+	return name+".txt";
 }
 
 // Response to http post request (/registerProject)
 router.route('/registerProject').post(upload.single('photo'),function(req,res){
 	try{
-		console.log(req.body);
-		console.log(req.file);
 		var descPath = setFile(req.session.user.id+Date.now(), req.body.projectInfo);
 		var reward = req.body.reward;
 		
@@ -254,9 +266,7 @@ router.route('/registerProject').post(upload.single('photo'),function(req,res){
 				// separate rewardPrice from 'reward'
 				var rewardPrice = parseInt(words[words.length-1].split('wei')[0]);
 				
-				
 				//insert into data project table.
-				console.log(req.file);
 				db.query('insert into project(projectName,contractName, companyContract, infoLocation, imgLocation,goalAmount,goalDate, rewardName, rewardPrice) values(?,?,?,?,?,?,?,?,?);',
 					[req.body.projectName,req.body.contractID, req.body.addr, descPath,req.file.filename
 					, req.body.goalPrice, req.body.goalDate,rewardName, rewardPrice],function(error,result){
