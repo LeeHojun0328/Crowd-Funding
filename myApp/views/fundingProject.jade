@@ -40,27 +40,24 @@ html
         .article
           .projectInfo
             h3 리워드 종류
-            input(type='checkbox', value='Bike')
-            | 1000wei 투자: 가죽지갑
-            br
-            input(type='checkbox', value='Bike')
-            | 1500wei 투자: 가죽지갑 + 각인
-            br
           .checkProject
             h3
               | 회사 스마트 컨트랙트 확인 (
-              a(href='https://rinkeby.etherscan.io/address/0x42658b31F1C5EEfD74c869dd2640591b00b22da7') smart contract on ethereum explorer
+              a(href='') smart contract on ethereum explorer
               | )
             p 약 6초의 시간이 소요됩니다. 이러디움 노드를 사용하여 현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.
-            button#checkGoalBtn 금액 달성도 및 목표날짜 확인
+            button#checkGoalBtn 금액 달성도 확인
             #loader
             p#checkGoal => 
         .fundingArticle
-          h3 나의 투자용 스마트 컨트랙트
+          h3 투자용 스마트 컨트랙트 선택
+          p  현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.
           select
           button.investorBalance 나의 이더 잔액 확인하기
           #loader
           p#checkBalance => 
+          h3 스마트 컨트랙티 비밀번호 입력
+          input.fundingPwd(type='password', placeholder='투자하려면 비밀번호를 입력해주세요', style="width:230px;")
           button.fundingBtn 투자하기
     #footer
 script.
@@ -71,8 +68,13 @@ script.
   console.log(reward);
   $('.article').prepend("<img src = '\/"+project[3]+"'/></a>");
   $('.projectInfo').prepend("<p><iframe src='\/"+project[2]+"'</iframe></p>");
+  $('.projectInfo').prepend('<p class="gAmount" style="display: inline;">목표금액:'+project[4]+'wei</p>');
+  $('.projectInfo').prepend('<p class="gDate" style="display: inline;">목표날짜:'+project[5]+'</p>');
   $('.projectInfo').prepend("<h2>"+project[0]+"</h2>");
-  
+  $('.projectInfo').append(reward[0].substring(0,reward[0].length-1)+"wei <input type='number' placeholder='리워드 갯수'><br>")
+  for(var i = 1 ; i < reward.length-1; i++){
+    $('.projectInfo').append(reward[i].substring(1,reward[i].length-1)+"wei <input type='number' placeholder='리워드 갯수'><br>")
+  }  
   $('.checkProject h3 a').attr('href', 'https://rinkeby.etherscan.io/address/'+project[1]);
   
   var pre = "<option value ="
@@ -81,5 +83,3 @@ script.
   for(var i = 0 ; i < addr.length && addr[0] != "" ; i++){
     $(".fundingArticle select").append(pre+addr[i]+"'>"+contractName[i]+": "+addr[i]+"</option>");
   }
-
-

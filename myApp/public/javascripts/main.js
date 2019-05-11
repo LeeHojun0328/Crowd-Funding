@@ -52,10 +52,11 @@ $(document).ready(function(){
 	$("#loader2").hide();
 	$("#checkGoalBtn").click(function(){
 		myFunction(this);
+		
 		$.ajax({
         	url: "/checkGoal",
         	type: "post",
-        	data: {address: '0x42658b31F1C5EEfD74c869dd2640591b00b22da7'},
+        	data: {address: project[1]},
         	success: function(result){
 				$("#checkGoal").text(result);
 				myFunction(this);
@@ -264,8 +265,8 @@ $(document).ready(function(){
 			return true;
 		}
 	});
-});
 
+});
 
 
 

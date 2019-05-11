@@ -110,7 +110,13 @@ body {
 	width: 100%;
 }
 
-/* Code for login_page.html */
+/* funding project page  */
+#body > .fundingGallery li a {
+	margin: 15px auto;
+	width: 90%;
+}
+
+/* Login page */
 #body .form-popup {
 	border: 2px solid #7caca9;
 	margin-top: 60px;

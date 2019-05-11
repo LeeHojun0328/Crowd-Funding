@@ -360,6 +360,7 @@ p a:hover {
 #body .projectInfo iframe{
 	border: 0;
 	width: 100%;
+	height: 100px;
 }
 .fundingArticle{
 	margin: 0 auto;
@@ -388,6 +389,7 @@ p a:hover {
 .fundingArticle #checkBalance{
 	margin: 5px 10px 25px;
 	font-weight: bold;
+	font-size: 13px;
 }
 #loader {
 	display: inline-block;

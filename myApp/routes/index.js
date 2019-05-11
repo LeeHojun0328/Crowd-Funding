@@ -79,11 +79,11 @@ router.get('/fundingList', function(req, res, next) {
     }
 });
 
+
 // Fungind project page.
 //You can make an investment on this page
 
 router.get('/fundingProject', function(req, res, next) {
-	console.log(req.query);
 	if(req.session.user){
 		var paramId = req.session.user.id;
         var contractName = [];
@@ -101,7 +101,6 @@ router.get('/fundingProject', function(req, res, next) {
 				db.query('select * from project where projectName = ? ;',
 					[req.query.name],function(error, result){
 						if(error) console.log(error);
-						console.log(result);
                         project.push(result[0].projectName);
                         project.push(result[0].companyContract);
 						project.push(result[0].infoLocation);
@@ -109,9 +108,10 @@ router.get('/fundingProject', function(req, res, next) {
                         project.push(result[0].goalAmount);
                         project.push(result[0].goalDate);
                         for(var j = 0 ; j < result.length ; j++){
-                            reward.push(result[j].rewardName);
-                            reward.push(result[j].rewardPrice);
-                            reward.push('`');
+                            //reward.push(result[j].rewardName);
+							//reward.push(result[j].rewardPrice);
+							//reward.push('`');
+							reward.push(result[j].rewardName+" "+result[j].rewardPrice+'`');
                         }
                         res.render('fundingProject',
                                 {contractName: contractName,contractList: contractList, project: project, reward: reward});	
@@ -164,29 +164,46 @@ router.get('/project', function(req, res, next) {
 
 
 /* post requests. */
-//router.route('/deploy').post(require('./deploy.js'));
+
+
+
+/* Funding project page  */
 
 router.route('/checkGoal').post(require('./checkGoal.js'));
+
+var funding = require('../../funding.js');
+router.route('/funding').post(function(req,res){
+	var from = req.body.from;
+	var amount;
+	var id;
+	var pwd;
+	funding(from, project[1],amount, id, pwd);
+});
+
+
 
 router.route('/loginPost').post(function f (req,res){
 	    var paramId = req.body.id;
 	    var paramPwd = req.body.pwd;
-		db.query('select pwd from user where id =? ;',
-            [paramId], function(error,result){
-        	if(error){throw error;}
-
-			if(paramPwd == result[0].pwd){	// login success.
-				console.log('login success');
-				req.session.user={
-            		id: paramId,
-            		authorized: true
-        		};
-				res.json({success: true});
-			}else{							// login failed.
-				console.log('login failed');
+		db.query('select id from user where id = ? ;', [paramId],function(error, result){
+			if(!result[0]){
 				res.json({success: false});
+				return false;
 			}
-    	});
+			db.query('select pwd from user where id =? ;',
+            	[paramId], function(error,result){
+        		if(error){throw error;}
+				if(paramPwd == result[0].pwd){	// login success.
+					req.session.user={
+            			id: paramId,
+            			authorized: true
+        			};
+					res.json({success: true});
+				}else{							// login failed.
+					res.json({success: false});
+				}
+    		});
+		});
 	}			
 );
 
