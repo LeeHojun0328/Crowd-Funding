@@ -71,13 +71,13 @@ script.
   $('.projectInfo').prepend('<p class="gAmount" style="display: inline;">목표금액:'+project[4]+'wei</p>');
   $('.projectInfo').prepend('<p class="gDate" style="display: inline;">목표날짜:'+project[5]+'</p>');
   $('.projectInfo').prepend("<h2>"+project[0]+"</h2>");
-  $('.projectInfo').append(reward[0].substring(0,reward[0].length-1)+"wei <input type='number' placeholder='리워드 갯수'><br>")
+  $('.projectInfo').append(reward[0].substring(0,reward[0].length)+"wei <input type='number' placeholder='리워드 갯수'><br>")
   for(var i = 1 ; i < reward.length-1; i++){
-    $('.projectInfo').append(reward[i].substring(1,reward[i].length-1)+"wei <input type='number' placeholder='리워드 갯수'><br>")
+    $('.projectInfo').append(reward[i].substring(1,reward[i].length)+"wei <input type='number' placeholder='리워드 갯수'><br>")
   }  
   $('.checkProject h3 a').attr('href', 'https://rinkeby.etherscan.io/address/'+project[1]);
   
-  var pre = "<option value ="
+  var pre = "<option value ='"
   var contractName = "#{contractName}".split(',');
   var addr = "#{contractList}".split(',');
   for(var i = 0 ; i < addr.length && addr[0] != "" ; i++){

@@ -47,9 +47,48 @@ $(document).ready(function(){
         $('.usrInfo .register').hide();	
 	}
 	
-	// check project goal.
 	$("#loader, .fundingArticle #loader").hide();
 	$("#loader2").hide();
+
+	/* funding project page  */
+	
+	$('button.fundingBtn').click(function(){
+		var pwd = $('.fundingArticle input.fundingPwd').val();
+		var rewardInputs = $('.projectInfo').children('input');
+		var selection = [];
+		var isEmpty = true;
+		for(var i = 0 ; i < rewardInputs.length; i++){
+			if(rewardInputs[i].value) {
+				isEmpty = false;
+			}
+			selection.push(rewardInputs[i].value);
+		}
+		if(!pwd){
+			alert('스마트컨트랙트 비밀번호를 입력해주세요.');
+			return false;
+		}
+		if(isEmpty){
+			alert('리워드를 선택해주세요.');
+			return false;
+		}
+			
+		$.ajax({
+            url: "/funding",
+            type: "post",
+            data: {
+				id : contractName[$('.fundingArticle option:selected').index()],
+				pwd: pwd,
+				select : selection,
+				from: $('.fundingArticle option:selected').val(),
+				to: project[1],
+				reward: reward
+			},
+            success: function(result){
+                alert(result);
+            }
+        });
+	});
+	
 	$("#checkGoalBtn").click(function(){
 		myFunction(this);
 		

@@ -171,13 +171,28 @@ router.get('/project', function(req, res, next) {
 
 router.route('/checkGoal').post(require('./checkGoal.js'));
 
+
+// Funding!
 var funding = require('../../funding.js');
 router.route('/funding').post(function(req,res){
+	console.log(req.body);
 	var from = req.body.from;
-	var amount;
-	var id;
-	var pwd;
-	funding(from, project[1],amount, id, pwd);
+	var id = req.body.id;
+	var pwd = req.body.pwd;
+	var selection = req.body['select[]'];
+	var totalPrice = 0;
+	var reward = req.body['reward[]'];
+	console.log('selection is ');
+	console.log(selection);
+	for (var i = 0 ; i < selection.length ; i++){
+		var eachPrice = reward[i].split(' ');
+		eachPrice = eachPrice[eachPrice.length-1];
+		totalPrice += Number(selection[i]) * Number(eachPrice);
+	}
+
+	funding.funding(from, req.body.to,totalPrice, id, pwd, function(result){
+		res.send(result);
+	});
 });
 
 
@@ -262,7 +277,7 @@ function setFile(name,data){
 	return name+".txt";
 }
 
-// Response to http post request (/registerProject)
+// register project
 router.route('/registerProject').post(upload.single('photo'),function(req,res){
 	try{
 		var descPath = setFile(req.session.user.id+Date.now(), req.body.projectInfo);
@@ -301,8 +316,7 @@ router.route('/registerProject').post(upload.single('photo'),function(req,res){
 	}
 });
 
-// Response to http post request. 
-// and deploy company smart contract to ethereum network. 
+// deploy company smart contract to ethereum network. 
 var deploy = require('../../deploy.js');
 router.route('/deployCompany').post(function(req,res){
 	 if(req.session.user){	

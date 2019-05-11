@@ -23,10 +23,11 @@ contractAbs.setProvider(provider);
 
 var funding ={};
 
-funding.funding = function (from, to, amount, id, pwd){
+funding.funding = function (from, to, amount, id, pwd, callback){
 	contractAbs.at(from).then(function(instance){
 		return instance.transferToC(to,amount, id, pwd,{from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'});
 	}).then(function(result){
+		callback(result);
 		console.log(result);
 	});
 }
