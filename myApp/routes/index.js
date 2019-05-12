@@ -175,7 +175,6 @@ router.route('/checkGoal').post(require('./checkGoal.js'));
 // Funding!
 var funding = require('../../funding.js');
 router.route('/funding').post(function(req,res){
-	console.log(req.body);
 	var from = req.body.from;
 	var id = req.body.id;
 	var pwd = req.body.pwd;
@@ -183,14 +182,13 @@ router.route('/funding').post(function(req,res){
 	var totalPrice = 0;
 	var reward = req.body['reward[]'];
 	console.log('selection is ');
-	console.log(selection);
 	for (var i = 0 ; i < selection.length ; i++){
 		var eachPrice = reward[i].split(' ');
 		eachPrice = eachPrice[eachPrice.length-1];
 		totalPrice += Number(selection[i]) * Number(eachPrice);
 	}
-
 	funding.funding(from, req.body.to,totalPrice, id, pwd, function(result){
+		console.log(result.tx);
 		res.send(result);
 	});
 });

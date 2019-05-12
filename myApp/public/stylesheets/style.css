@@ -407,7 +407,18 @@ p a:hover {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
   }
+#loader3{
 
+    position: relative;
+    top: -65px;
+    left: 520px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #102330;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+}
 
 /* funding list Page */
 #body > div .myPage {

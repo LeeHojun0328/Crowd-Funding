@@ -47,7 +47,7 @@ $(document).ready(function(){
         $('.usrInfo .register').hide();	
 	}
 	
-	$("#loader, .fundingArticle #loader").hide();
+	$("#loader, .fundingArticle #loader, .fundingArticle #loader3").hide();
 	$("#loader2").hide();
 
 	/* funding project page  */
@@ -71,7 +71,7 @@ $(document).ready(function(){
 			alert('리워드를 선택해주세요.');
 			return false;
 		}
-			
+		$(".fundingArticle #loader3").toggle();	
 		$.ajax({
             url: "/funding",
             type: "post",
@@ -84,10 +84,20 @@ $(document).ready(function(){
 				reward: reward
 			},
             success: function(result){
-                alert(result);
+                $(".fundingArticle #loader3").toggle();
+				$('.fundingArticle').append('<h3>투자결과</h3>');
+				$('.fundingArticle').append("<a href='https://rinkeby.etherscan.io/tx/" +result.tx+"'>투자결과: "+result.tx+"</a>");
+				alert("투자되었습니다!");
             }
         });
+		var btn = $(this);
+        btn.prop('disabled',true);
+        window.setTimeout(function(){
+            btn.prop('disabled',false);
+        },6000);
+        return false;
 	});
+
 	
 	$("#checkGoalBtn").click(function(){
 		myFunction(this);

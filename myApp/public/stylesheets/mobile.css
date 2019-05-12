@@ -115,7 +115,9 @@ body {
 	margin: 15px auto;
 	width: 90%;
 }
-
+#loader3{
+	left: 85%;
+}
 /* Login page */
 #body .form-popup {
 	border: 2px solid #7caca9;
