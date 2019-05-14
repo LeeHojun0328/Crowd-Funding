@@ -83,8 +83,13 @@ html
               script.
                 var pre = "https://rinkeby.etherscan.io/tx/";
                 var arr = "#{tnxList}".split(',');
-                for(var i = 0 ; i < arr.length && arr[0] != ""; i++){
-                $(".myPage .myInvestList .desclist").append(pre+arr[i]+"'>"+arr[i]+"</a><br>");
+                var rewardName = "#{rewardName}".split('`');
+                var rewardPrice = "#{rewardPrice}".split(',');
+                var rewardCount = "#{rewardCount}".split(',');
+                if(arr[0] !=""){
+                $(".myPage .myInvestList .desclist").append("<a href='"+pre+arr[0]+"' target='_blank'>리워드: "+rewardName[0]+" 가격: "+rewardPrice[0]+" 갯수: "+rewardCount[0]+"</a><br>");}
+                for(var i = 1 ; i < arr.length && arr[1] != ""; i++){
+                $(".myPage .myInvestList .desclist").append("<a href='"+pre+arr[i]+"' target='_blank'>리워드: "+rewardName[i].substring(1)+" 가격: "+rewardPrice[i]+" 갯수: "+rewardCount[i]+"</a><br>");
                 }
     #footer
 

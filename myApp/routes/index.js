@@ -53,12 +53,26 @@ router.get('/registerProject', function(req, res, next) {
 		res.redirect('/login');
 	}
 });
+
+
+
+/*
+   funding list page. (=투자관리 페이지)
+	
+	- deploy investor contract here.
+	- check the balance of investor contracts
+	- check the funding lists
+
+*/
 router.get('/fundingList', function(req, res, next) {
 	if(req.session.user){
 		var paramId = req.session.user.id;
 		var contractName = [];
 		var contractList = [];
 		var tnxList =[];
+		var rewardName = [];
+		var rewardPrice = [];
+		var rewardCount =[];
         db.query('select contractName,investorContract from investor where id =? ;',
             [paramId], function(error,result){
             if(error){throw error;}
@@ -66,12 +80,15 @@ router.get('/fundingList', function(req, res, next) {
 				contractName.push(result[i].contractName);
 			    contractList.push(result[i].investorContract);
 			}
-			db.query('select tnxAddress from investor natural join funding;', function(error, result){
+			db.query('select tnxAddress,rewardName, rewardPrice, rewardCount from investor natural join funding where id = ?;',[paramId], function(error, result){
             	if(error){throw error;}
                 for(var i = 0 ; i < result.length ; i++){
                 	tnxList.push(result[i].tnxAddress);
+					rewardName.push(result[i].rewardName+"`");
+					rewardPrice.push(result[i].rewardPrice);
+					rewardCount.push(result[i].rewardCount);
                 }
-                res.render('fundingListPage',{contractName: contractName,contractList: contractList, tnxList: tnxList});
+                res.render('fundingListPage',{rewardCount:rewardCount, rewardName:rewardName, rewardPrice: rewardPrice,contractName: contractName,contractList: contractList, tnxList: tnxList});
             }); 
         });
     }else{
@@ -82,10 +99,10 @@ router.get('/fundingList', function(req, res, next) {
 
 /* 
 
-Fungind project page.
- 
-- You can make an investment on this page
-- Server send information of the project that user wants to see.
+   Funding project page.
+
+   - You can make an investment on this page
+   - Server send information of the project that user wants to see.
  
  */
 router.get('/fundingProject', function(req, res, next) {
@@ -126,8 +143,11 @@ router.get('/fundingProject', function(req, res, next) {
 	}
 });
 
-// Project page.
-// This page introduces and manages projects.
+/*
+   Project page.
+   
+   - This page introduces and manages projects.
+*/
 router.get('/project', function(req, res, next) {
     if(req.session.user){
 		db.query('select distinct companyContract from company natural join project where id = ?;',
@@ -177,12 +197,12 @@ router.route('/checkGoal').post(require('./checkGoal.js'));
 
 
 /* 
-   
-Funding!
 
- - a user funds a project. 
- - First of all, data sent by client-side is prcessed to be saved in database. 
- - then, db qeury and response to cilent work asynchronously.
+   Funding!
+   
+   - a user funds a project. 
+   - First of all, data sent by client-side is prcessed to be saved in database. 
+   - then, db qeury and response to cilent work asynchronously.
 
 */
 var funding = require('../../funding.js');

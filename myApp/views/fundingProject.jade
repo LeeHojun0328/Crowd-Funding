@@ -43,12 +43,17 @@ html
           .checkProject
             h3
               | 회사 스마트 컨트랙트 확인 (
-              a(href='') smart contract on ethereum explorer
+              a(href='',target ='_blank') smart contract on ethereum explorer
               | )
             p 약 6초의 시간이 소요됩니다. 이러디움 노드를 사용하여 현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.
             button#checkGoalBtn 금액 달성도 확인
             #loader
-            p#checkGoal => 
+            p#checkGoal 
+            h3 환불신청
+            p
+              | 환불은 매일 오전 9시 자동환불이지만 현재 프로토타입으로 환불 조건이 맞는 경우 환불이 가능합니다.
+              br
+              | 조건: 목표 날짜를 초과하고 목표금액 달성못하면 환불됩니다.
         .fundingArticle
           h3 투자용 스마트 컨트랙트 선택
           p  현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.

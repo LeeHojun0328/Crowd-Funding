@@ -28,7 +28,6 @@ $(document).ready(function(){
 		return "";
 	}
 	var cook = $.cookie('user');  // getCookie('user'); 
-	//console.log("current cook value is "+cook);
 	console.log(getCookie('user'));
 	//여기서 세션 관리에 따라 로그인 로그아수 hide, show 결정 
 	if(cook== 1 || !cook){ // if empty -> false. No login
@@ -87,7 +86,7 @@ $(document).ready(function(){
             success: function(result){
                 $(".fundingArticle #loader3").toggle();
 				$('.fundingArticle').append('<h3>투자결과</h3>');
-				$('.fundingArticle').append("<a href='https://rinkeby.etherscan.io/tx/" +result.tx+"'>투자결과: "+result.tx+"</a>");
+				$('.fundingArticle').append("<a href='https://rinkeby.etherscan.io/tx/" +result.tx+"' target =\'_blank\'>투자결과: "+result.tx+"</a>");
 				alert("투자되었습니다!");
             }
         });
@@ -108,7 +107,7 @@ $(document).ready(function(){
         	type: "post",
         	data: {address: project[1]},
         	success: function(result){
-				$("#checkGoal").text(result);
+				$("#checkGoal").text("=> "+result);
 				myFunction(this);
         	}
     	});
