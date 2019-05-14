@@ -46,11 +46,32 @@ $(document).ready(function(){
         $('.usrInfo .register').hide();	
 	}
 	
-	$("#loader, .fundingArticle #loader, .fundingArticle #loader3").hide();
-	$("#loader2").hide();
+	$("#loader,#loader2, #loader2.fundingArticle #loader, .fundingArticle #loader3, #loader4").hide();
 
 	/* funding project page  */
-	
+    
+	$("#refundBtn").click(function(){
+        $('#loader4').toggle();
+		
+        $.ajax({
+            url: "/refund",
+            type: "post",
+            data: {
+				address: project[1],
+				projectName: project[0]
+				},
+            success: function(result){
+				$('#loader4').toggle();
+            	if(!result.success){
+					alert('프로젝트가 진행중이거나 성공하여 환불이 불가능합니다.');
+				}else{
+					alert('환불되었습니다! 금액을 확인해주세요');
+				}
+			}
+        });
+    });
+
+
 	$('button.fundingBtn').click(function(){
 		var pwd = $('.fundingArticle input.fundingPwd').val();
 		var rewardInputs = $('.projectInfo').children('input');
@@ -199,13 +220,13 @@ $(document).ready(function(){
 		data.contractName = contractName;
 		console.log(data);
 		var pre = "<a href='https://rinkeby.etherscan.io/address/";
-		myFunction2(this);
+		$('#loader2').toggle();
 		$.ajax({
             url: "/deployInvest",
             type: "post",
 			data: data,
             success: function(result){
-				myFunction2(this);
+				$('#loader2').toggle();
 				$(".myPage .investContractContainer").append("<p>주소"+result.data+"로 배포되었습니다.</p>");
 				$(".myPage .investContractContainer").append(pre+result.data+"'>contract 확인하기</a>");
 				

@@ -14,26 +14,36 @@ const provider = new HDWalletProvider("buzz cliff voice tired good ready ripple 
 
 // smart contract과 infura 이더리움 노드에 연결
 contractAbs2.setProvider(provider);
-
+contractAbs2.autoGas = true;
 obj = {}
-
-obj.refund = function (addr){
-	var refund;
-    contractAbs2.at(addr).then(function(instance){
-        refund = instance;
-		return refund.isGoal();
-    }).then(function(result){
-        if(result==false){
-			console.log("refunding success.");
-			return refund.refundTo({from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'});
-		}else{
-			console.log("refunding failed.");
-			return false;
-		}
-    });
+function refund (addr,refundInfo,i,cb){
+	var re;
+	console.log('i는 '+i);
+	if(i != refundInfo.length){
+		contractAbs2.at(addr).then(function(instance){
+    	    re = instance;
+			return re;
+    	}).then(function(result){ // 프로젝트 실패  
+			console.log('트랜스퍼 실행');
+			var refundValue = refundInfo[i].rewardPrice * refundInfo[i].rewardCount;
+			return result.transferTo(refundInfo[i].investorContract,refundValue,{from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'});
+			
+    	}).then(function(result){
+			console.log(result);
+			return refund(addr,refundInfo,i+1,function(re){});
+		}).then(function(result){
+			cb(true);
+		}).catch(function(err){
+    	    console.log(err);
+    	});
+	}else{
+		cb(true);
+		return true;
+	}
 }
 
-module.exports = obj;
+
+module.exports = refund;
 
 
 

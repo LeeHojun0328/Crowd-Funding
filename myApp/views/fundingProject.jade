@@ -54,6 +54,8 @@ html
               | 환불은 매일 오전 9시 자동환불이지만 현재 프로토타입으로 환불 조건이 맞는 경우 환불이 가능합니다.
               br
               | 조건: 목표 날짜를 초과하고 목표금액 달성못하면 환불됩니다.
+            button#refundBtn 환불신청
+            #loader4
         .fundingArticle
           h3 투자용 스마트 컨트랙트 선택
           p  현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.
@@ -65,7 +67,7 @@ html
           input.fundingPwd(type='password', placeholder='투자하려면 비밀번호를 입력해주세요', style="width:230px;")
           button.fundingBtn 투자하기
           #loader3
-          p(style="text-align:center;")스마트컨트랙트에서 스마트컨트랙트로 거래 됩니다. 약 20초의 시간이 소요됩니다.
+          p(style="text-align:center;") 스마트컨트랙트에서 스마트컨트랙트로 거래 됩니다. 약 20초의 시간이 소요됩니다.
     #footer
 script.
   var project = "#{project}".split(',');

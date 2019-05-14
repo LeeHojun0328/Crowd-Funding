@@ -196,6 +196,69 @@ router.get('/project', function(req, res, next) {
 router.route('/checkGoal').post(require('./checkGoal.js'));
 
 
+/*
+   Refund!
+*/
+
+// 목표날짜 안됐으면 true 
+// 지났으면 false
+function compareDate (goalDate, currentDate){
+	if (Number(goalDate.substring(0,4)) <  Number(currentDate.substring(0,4)))
+		return false;
+	else if(Number(goalDate.substring(5,7)) < Number(currentDate.substring(5,7)))
+		return false;
+	else if(Number(goalDate.substring(8,10)) < Number(currentDate.substring(8,10)))
+		return false;
+	else 
+		return true;
+}
+var refund = require('../../refund.js');
+var getBalance = require('../../getBalance.js');
+//var refund = require('../../refund.js');
+router.route('/refund').post(function(req,res){
+	var addr = req.body.address;
+	var today = new Date();
+	var currentDate = today.toJSON().slice(0,10).replace(/-/g,'-');
+	db.query('select goalDate, goalAmount from project where projectName = ?',[req.body.projectName]
+		,function(err,result){
+			if(err)console.log(err);
+			console.log('리펀드 첫번째 디비쿼리 결과');
+			console.log(result);
+			getBalance.companyBalance(addr,function(r1){
+				console.log('현재 컨트랙트 내부 금액 '+r1);
+				console.log('날짜?' );
+				console.log(compareDate(result[0].goalDate,currentDate));
+				if(!compareDate(result[0].goalDate,currentDate) && (r1 < result[0].goalAmount)){
+					console.log('내부');
+					db.query('select investorContract, rewardPrice, rewardCount from funding where companyContract =?;',[addr],function(err,result){
+						if(err)console.log(err);
+						console.log(result);
+						refund(addr,result,0,function(re){
+							if(re){
+								res.send({success: true});
+							}
+						});
+						
+						console.log('리펀드 값');
+						//res.send({success: true});
+						
+					});
+				}else{
+					res.send({success: false});
+				}	
+			});	
+			// 목표날짜 지남 && 금액 실패 ->  환불가능
+			// 목표날짜 지남 && 금액 성공 -> 환불불가 목표성공
+			// 목표날짜 안지남 -> 아직 진행중 
+			//if( !compareDate(result[0].goalDate,currentDate && 현재 가격)){
+				// 리펀드 애들 갖고오기 
+			//	res.send({success: 1}); // 진행중
+		//	}
+		
+		});
+});
+
+
 /* 
 
    Funding!
@@ -314,7 +377,7 @@ var upload = multer({storage: storage});
 
 // create and write text file for project description.
 function setFile(name,data){
-	fs.writeFile(name+".txt", data, function(err){
+	fs.writeFile('./uploads/'+name+".txt", data, function(err){
 		if(err) console.log(err);
 	});
 	return name+".txt";
@@ -353,7 +416,7 @@ router.route('/registerProject').post(upload.single('photo'),function(req,res){
 			if(error){
             	console.log(error);
         	}
-			});
+		});
 	}catch(err){
 		console.log(err);
 	}
