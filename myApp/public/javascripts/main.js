@@ -81,7 +81,8 @@ $(document).ready(function(){
 				select : selection,
 				from: $('.fundingArticle option:selected').val(),
 				to: project[1],
-				reward: reward
+				rewardName: rewardName,
+				rewardPrice: rewardPrice
 			},
             success: function(result){
                 $(".fundingArticle #loader3").toggle();

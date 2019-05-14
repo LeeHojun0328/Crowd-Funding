@@ -80,9 +80,14 @@ router.get('/fundingList', function(req, res, next) {
 });
 
 
-// Fungind project page.
-//You can make an investment on this page
+/* 
 
+Fungind project page.
+ 
+- You can make an investment on this page
+- Server send information of the project that user wants to see.
+ 
+ */
 router.get('/fundingProject', function(req, res, next) {
 	if(req.session.user){
 		var paramId = req.session.user.id;
@@ -90,7 +95,8 @@ router.get('/fundingProject', function(req, res, next) {
         var contractList = [];
 		var project = [];
 		var projectDesc;
-		var reward = [];
+		var rewardName = [];
+		var rewardPrice = [];
 		db.query('select contractName,investorContract from investor where id =? ;',
             [paramId], function(error,result){
 				if(error) console.log(error);
@@ -108,13 +114,11 @@ router.get('/fundingProject', function(req, res, next) {
                         project.push(result[0].goalAmount);
                         project.push(result[0].goalDate);
                         for(var j = 0 ; j < result.length ; j++){
-                            //reward.push(result[j].rewardName);
-							//reward.push(result[j].rewardPrice);
-							//reward.push('`');
-							reward.push(result[j].rewardName+" "+result[j].rewardPrice+'`');
-                        }
+                        	rewardName.push(result[j].rewardName+"`");
+							rewardPrice.push(result[j].rewardPrice);
+						}
                         res.render('fundingProject',
-                                {contractName: contractName,contractList: contractList, project: project, reward: reward});	
+                                {contractName: contractName,contractList: contractList, project: project, rewardName: rewardName, rewardPrice: rewardPrice});	
 					});	
 			});
 	}else{
@@ -172,7 +176,15 @@ router.get('/project', function(req, res, next) {
 router.route('/checkGoal').post(require('./checkGoal.js'));
 
 
-// Funding!
+/* 
+   
+Funding!
+
+ - a user funds a project. 
+ - First of all, data sent by client-side is prcessed to be saved in database. 
+ - then, db qeury and response to cilent work asynchronously.
+
+*/
 var funding = require('../../funding.js');
 router.route('/funding').post(function(req,res){
 	var from = req.body.from;
@@ -180,15 +192,28 @@ router.route('/funding').post(function(req,res){
 	var pwd = req.body.pwd;
 	var selection = req.body['select[]'];
 	var totalPrice = 0;
-	var reward = req.body['reward[]'];
-	console.log('selection is ');
-	for (var i = 0 ; i < selection.length ; i++){
-		var eachPrice = reward[i].split(' ');
-		eachPrice = eachPrice[eachPrice.length-1];
-		totalPrice += Number(selection[i]) * Number(eachPrice);
+	var rewardName = [];
+	var rewardPrice = req.body['rewardPrice[]'];
+	
+	rewardName[0] = req.body['rewardName[]'][0];
+	for (var  i  = 1 ; i < req.body['rewardName[]'].length-1; i++){
+		rewardName.push(req.body['rewardName[]'][i].substring(1));
 	}
+	console.log(rewardName);
+	for (var i = 0 ; i < selection.length ; i++){
+		totalPrice += Number(selection[i]) * Number(rewardPrice[i]);
+	}
+	console.log('리우더 이름 길이 '+ rewardName.length);
 	funding.funding(from, req.body.to,totalPrice, id, pwd, function(result){
-		console.log(result.tx);
+		
+		// db qeury and response works asynchronously.
+		for (var i = 0 ; i < rewardName.length ; i++){
+			 if(Number(selection[i]) != 0 ){
+				db.query('insert into funding(investorContract, companyContract,tnxAddress, rewardName, rewardPrice, rewardCount ) values (?,?,?,?,?,?)',[from, req.body.to, result.tx,rewardName[i],Number(rewardPrice[i]),Number(selection[i])],function(err,result2){
+					if(err)console.log(err);	
+				});
+			}
+		}
 		res.send(result);
 	});
 });
