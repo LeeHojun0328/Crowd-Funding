@@ -63,8 +63,7 @@ html
                 var addr = "#{contractList}".split(',');
                 var contractName = "#{contractName}".split(',');
                 for(var i = 0 ; i < addr.length && addr[0] != "" ; i++){
-                //document.write(arr[i]+"<br>");
-                $(".myPage .myInvestList .desc").append(pre+addr[i]+"'>"+contractName[i]+": "+addr[i]+"</a><br>");
+                $(".myPage .myInvestList .desc").append(pre+addr[i]+"' target ='_blank'>"+contractName[i]+": "+addr[i]+"</a><br>");
                 }
             .fundingArticle(style="padding: 0px; margin:-5px;")
               select

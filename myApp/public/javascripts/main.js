@@ -65,10 +65,17 @@ $(document).ready(function(){
             	if(!result.success){
 					alert('프로젝트가 진행중이거나 성공하여 환불이 불가능합니다.');
 				}else{
-					alert('환불되었습니다! 금액을 확인해주세요');
+					alert('환불승인되었습니다! 환불은 단계적으로 실행됩니다. 금액을 확인해주세요');
 				}
 			}
         });
+
+		var btn = $(this);
+        btn.prop('disabled',true);
+        window.setTimeout(function(){
+            btn.prop('disabled',false);
+        },36000);
+        return false;
     });
 
 
@@ -106,9 +113,13 @@ $(document).ready(function(){
 			},
             success: function(result){
                 $(".fundingArticle #loader3").toggle();
-				$('.fundingArticle').append('<h3>투자결과</h3>');
-				$('.fundingArticle').append("<a href='https://rinkeby.etherscan.io/tx/" +result.tx+"' target =\'_blank\'>투자결과: "+result.tx+"</a>");
-				alert("투자되었습니다!");
+				if(!result){
+					alert('비밀번호가 틀렸거나 잔액이 부족합니다.');
+				}else{
+					$('.fundingArticle').append('<h3>투자결과</h3>');
+					$('.fundingArticle').append("<a href='https://rinkeby.etherscan.io/tx/" +result.tx+"' target =\'_blank\'>투자결과: "+result.tx+"</a>");
+					alert("투자되었습니다!");
+				}
             }
         });
 		var btn = $(this);

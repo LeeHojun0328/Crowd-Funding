@@ -38,7 +38,7 @@ html
     #body
       div
         .article
-          .projectInfo
+          form.projectInfo
             h3 리워드 종류
           .checkProject
             h3
@@ -79,9 +79,9 @@ script.
   $('.projectInfo').prepend('<p class="gAmount" style="display: inline;">목표금액:'+project[4]+'wei</p>');
   $('.projectInfo').prepend('<p class="gDate" style="display: inline;">목표날짜:'+project[5]+'</p>');
   $('.projectInfo').prepend("<h2>"+project[0]+"</h2>");
-  $('.projectInfo').append(rewardName[0]+rewardPrice[0]+"wei <input type='number' placeholder='리워드 갯수'><br>")
+  $('.projectInfo').append(rewardName[0]+rewardPrice[0]+"wei <input type='number', min='1', placeholder='리워드 갯수'><br>")
   for(var i = 1 ; i < rewardName.length-1; i++){
-    $('.projectInfo').append(rewardName[i].substring(1,rewardName[i].length)+rewardPrice[i]+"wei <input type='number' placeholder='리워드 갯수'><br>")
+    $('.projectInfo').append(rewardName[i].substring(1,rewardName[i].length)+rewardPrice[i]+"wei <input type='number',min='1', placeholder='리워드 갯수'><br>")
   }  
   $('.checkProject h3 a').attr('href', 'https://rinkeby.etherscan.io/address/'+project[1]);
   var pre = "<option value ='"

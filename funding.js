@@ -29,7 +29,10 @@ funding.funding = function (from, to, amount, id, pwd, callback){
 	}).then(function(result){
 		callback(result);
 		console.log(result);
-	});
+	}).catch(function(err){
+        console.log(err);
+		callback(false);
+    });
 }
 
 module.exports = funding;

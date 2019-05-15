@@ -79,7 +79,7 @@ html
                     input.contractPwd1(type='password', placeholder='비밀번호', name='contractPwd1')
                     input.contractPwd2(type='password', placeholder='비밀번호 재확인', name='contractPwd2')
                     div
-                      input.goalPrice(type='number', placeholder='투자목표 금액(wei)', name='goalPrice', required='')
+                      input.goalPrice(type='number', placeholder='투자목표 금액(wei)',min='1', name='goalPrice', required='')
                       input.goalDate(type='date', placeholder='목표날짜(YYYY.MM.DD)', name='goalDate', required='')
                       button.deployCompany(type='button') 생성
                       #loader

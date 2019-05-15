@@ -232,16 +232,26 @@ router.route('/refund').post(function(req,res){
 					console.log('내부');
 					db.query('select investorContract, rewardPrice, rewardCount from funding where companyContract =?;',[addr],function(err,result){
 						if(err)console.log(err);
+						console.log('펀딩할 데이터 쿼리 result');
 						console.log(result);
+						if(result.length == 0){
+							console.log('이미 삭제됨~ 수고링');
+							res.send({success: false});
+							return false;
+						}
+						db.query('delete from funding where companyContract = ?',[addr], function(err,result){
+							if(err) console.log(err);
+							console.log('펀딩 기록 삭제');
+							console.log(result);
+						});
 						refund(addr,result,0,function(re){
+							setTimeout(function(){},36000)
 							if(re){
 								res.send({success: true});
 							}
 						});
 						
 						console.log('리펀드 값');
-						//res.send({success: true});
-						
 					});
 				}else{
 					res.send({success: false});
@@ -288,7 +298,10 @@ router.route('/funding').post(function(req,res){
 	}
 	console.log('리우더 이름 길이 '+ rewardName.length);
 	funding.funding(from, req.body.to,totalPrice, id, pwd, function(result){
-		
+		// funding fail cause of ether lackness
+		if(!result){
+			res.send(result);
+		}
 		// db qeury and response works asynchronously.
 		for (var i = 0 ; i < rewardName.length ; i++){
 			 if(Number(selection[i]) != 0 ){

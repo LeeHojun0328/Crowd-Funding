@@ -30,13 +30,15 @@ function refund (addr,refundInfo,i,cb){
 			
     	}).then(function(result){
 			console.log(result);
-			return refund(addr,refundInfo,i+1,function(re){});
+			refund(addr,refundInfo,i+1,function(re){});
+			return true;
 		}).then(function(result){
 			cb(true);
 		}).catch(function(err){
     	    console.log(err);
     	});
 	}else{
+		console.log('i와 refund.legnth 같');
 		cb(true);
 		return true;
 	}
