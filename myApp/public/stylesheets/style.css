@@ -357,6 +357,31 @@ p a:hover {
 	text-decoration: none;
 	text-transform: uppercase;
 }
+#body > div .article .refundBtn{
+    display: block;
+    margin: 80px auto 20px;
+    background-color: #4CAF50;
+    font-size: 22px;
+    color: white;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+    width: 240px;
+    opacity: 0.8;
+}
+#body > div .article .refundBar{
+	width: 1%;
+	height: 43px;
+	background-color: #4CAF50;
+	position: relative;
+}
+#body > div .article .refundBtn p{
+	color: white;
+	width: 240px;
+	margin: 0;
+	position: absolute;
+	top: 20%;
+}
 #body .projectInfo iframe{
 	border: 0;
 	width: 100%;
@@ -374,7 +399,7 @@ p a:hover {
 	height: 30px;
 	font-size: 15px;
 }
-.fundingBtn{
+.fundingBtn {
 	display: block;
 	margin: 80px auto 20px;
 	background-color: #4CAF50;
@@ -383,7 +408,7 @@ p a:hover {
   padding: 13px 20px;
   border: none;
   cursor: pointer;
- 	width: 40%;
+ 	width: 240px;
 	opacity: 0.8;
 }
 .fundingArticle #checkBalance{

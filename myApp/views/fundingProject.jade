@@ -51,11 +51,12 @@ html
             p#checkGoal 
             h3 환불신청
             p
-              | 환불은 매일 오전 9시 자동환불이지만 현재 프로토타입으로 환불 조건이 맞는 경우 환불이 가능합니다.
+              | 환불은 매일 오전 9시 자동환불이지만 현재 프로토타입으로 환불 조건이 맞는 경우 환불이 가능하며 환불은 순차적으로 진행됩니다.
               br
               | 조건: 목표 날짜를 초과하고 목표금액 달성못하면 환불됩니다.
-            button#refundBtn 환불신청
-            #loader4
+            button.refundBtn#refundBtn
+              .refundBar
+                p 환불신청
         .fundingArticle
           h3 투자용 스마트 컨트랙트 선택
           p  현재 이더리움(rinkeby) 상의 smart contract의 정보를 가져옵니다.

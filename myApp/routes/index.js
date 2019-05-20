@@ -222,26 +222,18 @@ router.route('/refund').post(function(req,res){
 	db.query('select goalDate, goalAmount from project where projectName = ?',[req.body.projectName]
 		,function(err,result){
 			if(err)console.log(err);
-			console.log('리펀드 첫번째 디비쿼리 결과');
-			console.log(result);
 			getBalance.companyBalance(addr,function(r1){
-				console.log('현재 컨트랙트 내부 금액 '+r1);
-				console.log('날짜?' );
 				console.log(compareDate(result[0].goalDate,currentDate));
 				if(!compareDate(result[0].goalDate,currentDate) && (r1 < result[0].goalAmount)){
-					console.log('내부');
 					db.query('select investorContract, rewardPrice, rewardCount from funding where companyContract =?;',[addr],function(err,result){
 						if(err)console.log(err);
-						console.log('펀딩할 데이터 쿼리 result');
 						console.log(result);
 						if(result.length == 0){
-							console.log('이미 삭제됨~ 수고링');
 							res.send({success: false});
 							return false;
 						}
 						db.query('delete from funding where companyContract = ?',[addr], function(err,result){
 							if(err) console.log(err);
-							console.log('펀딩 기록 삭제');
 							console.log(result);
 						});
 						refund(addr,result,0,function(re){
@@ -251,7 +243,6 @@ router.route('/refund').post(function(req,res){
 							}
 						});
 						
-						console.log('리펀드 값');
 					});
 				}else{
 					res.send({success: false});
@@ -260,11 +251,6 @@ router.route('/refund').post(function(req,res){
 			// 목표날짜 지남 && 금액 실패 ->  환불가능
 			// 목표날짜 지남 && 금액 성공 -> 환불불가 목표성공
 			// 목표날짜 안지남 -> 아직 진행중 
-			//if( !compareDate(result[0].goalDate,currentDate && 현재 가격)){
-				// 리펀드 애들 갖고오기 
-			//	res.send({success: 1}); // 진행중
-		//	}
-		
 		});
 });
 

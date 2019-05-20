@@ -50,9 +50,28 @@ $(document).ready(function(){
 
 	/* funding project page  */
     
+	function move() {
+  		var elem = $('.refundBar');
+			//document.getElementsByClassName("refundBar");   
+  		var width = 1;
+  		var id = setInterval(frame, 230);
+  		function frame() {
+    		if (width >= 95) {
+      			clearInterval(id);
+    		} else {
+      			width++;
+				elem.css('width',width+"%");
+      			//elem.style.width = width + '%'; 
+  	  		}
+  		}
+	}
+
 	$("#refundBtn").click(function(){
         $('#loader4').toggle();
-		
+		$('.refundBtn').css('background-color','#ddd');
+		var bar = $('.refundBar');
+		var width = 1;
+		var id = setInterval(function(){width++; bar.css('width',width+"%");},230);
         $.ajax({
             url: "/refund",
             type: "post",
@@ -62,7 +81,10 @@ $(document).ready(function(){
 				},
             success: function(result){
 				$('#loader4').toggle();
-            	if(!result.success){
+            	$('.refundBar').css('width',"100%");
+				clearInterval(id);
+				bar.css('width','100%');
+				if(!result.success){
 					alert('프로젝트가 진행중이거나 성공하여 환불이 불가능합니다.');
 				}else{
 					alert('환불승인되었습니다! 환불은 단계적으로 실행됩니다. 금액을 확인해주세요');
@@ -77,7 +99,6 @@ $(document).ready(function(){
         },36000);
         return false;
     });
-
 
 	$('button.fundingBtn').click(function(){
 		var pwd = $('.fundingArticle input.fundingPwd').val();

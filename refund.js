@@ -27,7 +27,6 @@ function refund (addr,refundInfo,i,cb){
 			console.log('트랜스퍼 실행');
 			var refundValue = refundInfo[i].rewardPrice * refundInfo[i].rewardCount;
 			return result.transferTo(refundInfo[i].investorContract,refundValue,{from :'0xC745bb9D1d0CBb7C97A888Df70d1b78028979506'});
-			
     	}).then(function(result){
 			console.log(result);
 			refund(addr,refundInfo,i+1,function(re){});
@@ -38,7 +37,6 @@ function refund (addr,refundInfo,i,cb){
     	    console.log(err);
     	});
 	}else{
-		console.log('i와 refund.legnth 같');
 		cb(true);
 		return true;
 	}
